@@ -14,4 +14,8 @@ class ItemTests extends GrailsUnitTestCase {
     void testSomething() {
 
     }
+	
+	void testDatabase(){
+		assertEquals 
+		}
 }

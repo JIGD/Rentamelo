@@ -3,6 +3,7 @@ package com.rentamelo
 class Item {
 	
 	long id = 0L
+	String name
 	Date deadLine //fecha en que acaba el anuncio (si es que acaba)
 	Date dateCreated //fecha en que fue creado
 	String summary // vista pequeña
@@ -14,9 +15,10 @@ class Item {
 	static hasMany = [tags : Tag]
 	
     static constraints = {
-		summary blank:false, unique:true
+		name blank:false
+		summary blank:false
 		photo nullable:true, maxSize: 16384 /* 16K */
-		timeSpent min: 0L
+		id unique:true
 		deadLine nullable:true
 		details blank:false, maxSize:1000
 		isSent nullable:false
