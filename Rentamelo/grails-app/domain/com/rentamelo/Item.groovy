@@ -12,7 +12,7 @@ class Item {
 	byte[] photo //foto del articulo
 	boolean isSent = false // para saber si se envia o no 
 	
-
+	static belongsTo = User
 	static hasMany = [tags : Tag]
 	
     static constraints = {
