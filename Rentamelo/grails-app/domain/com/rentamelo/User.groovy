@@ -16,7 +16,7 @@ class User {
     	username blank:false, unique:true
 		password blank:false, password:true
 		fullName blank:false
-		email blank:false, unique:true
+		email nullable:false, unique:true
 		address1 blank:false
 		address2 nullable:true
 		avatar nullable:true, maxSize:32768	//32k	

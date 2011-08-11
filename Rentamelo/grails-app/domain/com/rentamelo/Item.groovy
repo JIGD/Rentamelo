@@ -24,4 +24,8 @@ class Item {
 		details blank:false, maxSize:3000
 		isSent nullable:false
     }
+	
+	String toString(){
+		return name
+		}
 }
