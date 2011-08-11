@@ -1,0 +1,23 @@
+Testsuite: com.rentamelo.ItemTests
+Tests run: 3, Failures: 0, Errors: 1, Time elapsed: 0.443 sec
+------------- Standard Output ---------------
+--Output from testSomething--
+--Output from testCRUD--
+--Output from testDatabase--
+------------- ---------------- ---------------
+------------- Standard Error -----------------
+--Output from testSomething--
+--Output from testCRUD--
+--Output from testDatabase--
+------------- ---------------- ---------------
+
+Testcase: testSomething took 0.296 sec
+Testcase: testCRUD took 0.104 sec
+	Caused an ERROR
+No signature of method: com.rentamelo.Item.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), each(groovy.lang.Closure), sleep(long)
+groovy.lang.MissingMethodException: No signature of method: com.rentamelo.Item.save() is applicable for argument types: (java.util.LinkedHashMap) values: [[failOnError:true]]
+Possible solutions: wait(), any(), wait(long), any(groovy.lang.Closure), each(groovy.lang.Closure), sleep(long)
+	at com.rentamelo.ItemTests.testCRUD(ItemTests.groovy:26)
+
+Testcase: testDatabase took 0.006 sec
