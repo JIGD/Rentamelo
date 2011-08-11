@@ -21,7 +21,7 @@ class Item {
 		photo nullable:true, maxSize: 16384 /* 16K */
 		id unique:true
 		deadLine nullable:true
-		details blank:false, maxSize:1000
+		details blank:false, maxSize:3000
 		isSent nullable:false
     }
 }
