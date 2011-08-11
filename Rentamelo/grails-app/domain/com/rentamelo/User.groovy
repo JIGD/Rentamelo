@@ -14,6 +14,11 @@ class User {
     	username blank:false, unique:true
 		password blank:false, password:true
 		fullName blank:false
-		address1 blank:false		
+		address1 blank:false
+		address2 nullable:true		
+	}
+	
+	String toString(){
+		username
 	}
 }
