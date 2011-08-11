@@ -5,6 +5,7 @@ class User {
 	String username
 	String password
 	String fullName
+	String email
 	String address1
 	String address2
 	
@@ -14,6 +15,7 @@ class User {
     	username blank:false, unique:true
 		password blank:false, password:true
 		fullName blank:false
+		email blank:false, unique:true
 		address1 blank:false
 		address2 nullable:true		
 	}
