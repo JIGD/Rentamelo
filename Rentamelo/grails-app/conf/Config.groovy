@@ -10,6 +10,8 @@
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
 
+import grails.plugins.springsecurity.SecurityConfigType
+
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
@@ -88,3 +90,18 @@ log4j = {
 
     warn   'org.mortbay.log'
 }
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.rentamelo.SecUser'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.rentamelo.SecUserSecRole'
+grails.plugins.springsecurity.authority.className = 'com.rentamelo.SecRole'
+
+grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
+grails.plugins.springsecurity.interceptUrlMap = [
+
+	
+	'/item/*':         ['IS_AUTHENTICATED_REMEMBERED'],
+	'/user/*':         ['IS_AUTHENTICATED_REMEMBERED'],
+	'/**':               ['IS_AUTHENTICATED_ANONYMOUSLY']
+]
+
