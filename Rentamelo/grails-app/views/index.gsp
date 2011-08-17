@@ -80,13 +80,13 @@
       
      <sec:ifLoggedIn>
      <li>Hola, <sec:username/></li> 
-     <li><g:link controller = "logout">Salir</g:link></li>>
+     <li><g:link controller = "logout">Salir</g:link></li>
      </sec:ifLoggedIn>
         
      <sec:ifNotLoggedIn>           
      <li>Hola, invitado.</li> 
      <li><g:link controller = "signup">Inscribirse</g:link></li>
-     <li><g:link action = "list", controller = "user">Ingresar</g:link></li>     
+     <li><g:link url= "login/auth">Ingresar</g:link></li>     
      </sec:ifNotLoggedIn>           
                 
                 <h1>Lista de Categorias:</h1>
@@ -95,9 +95,7 @@
                         <li>Categoria 2</li>
                         <li>Categoria 3</li>
                         <li>Otra Categoría</li>
-                </ul>
-       
-                
+                </ul
                 
                 </div>
                 <div class="panelBtm"></div>
