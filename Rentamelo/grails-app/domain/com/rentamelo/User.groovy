@@ -1,9 +1,7 @@
 package com.rentamelo
 
-class User {
+class User extends SecUser{
 	
-	String username
-	String password
 	String fullName
 	String email
 	String address1
@@ -13,8 +11,8 @@ class User {
 	static hasMany = [items:Item]
 	
     static constraints = {
-    	username blank:false, unique:true
-		password blank:false, password:true
+    	//username blank:false, unique:true
+		//password blank:false, password:true
 		fullName blank:false
 		email nullable:false, unique:true
 		address1 blank:false

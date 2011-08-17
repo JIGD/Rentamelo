@@ -1,7 +1,8 @@
 <html>
     <head>
         <title>Welcome to Grails</title>
-        <meta name="layout" content="main" />
+        <meta name="layout" />
+        <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
         <style type="text/css" media="screen">
 
         #nav {
@@ -55,7 +56,7 @@
             <div class="homePagePanel">
                 <div class="panelTop"></div>
                 <div class="panelBody">
-                    <h1>Application Status</h1>
+                 <!-- <h1>Application Status</h1>
                     <ul>
                         <li>App version: <g:meta name="app.version"></g:meta></li>
                         <li>Grails version: <g:meta name="app.grails.version"></g:meta></li>
@@ -75,24 +76,44 @@
                             <li>${plugin.name} - ${plugin.version}</li>
                         </g:each>
 
-                    </ul>
+                    </ul> --> 
+      
+     <sec:ifLoggedIn>
+     <li>Hola, <sec:username/></li> 
+     <li><g:link controller = "logout">Salir</g:link></li>>
+     </sec:ifLoggedIn>
+        
+     <sec:ifNotLoggedIn>           
+     <li>Hola, invitado.</li> 
+     <li><g:link controller = "signup">Inscribirse</g:link></li>
+     <li><g:link action = "list", controller = "user">Ingresar</g:link></li>     
+     </sec:ifNotLoggedIn>           
+                
+                <h1>Lista de Categorias:</h1>
+                 <ul>
+                        <li>Categoria 1</li>
+                        <li>Categoria 2</li>
+                        <li>Categoria 3</li>
+                        <li>Otra Categoría</li>
+                </ul>
+       
+                
+                
                 </div>
                 <div class="panelBtm"></div>
             </div>
         </div>
         <div id="pageBody">
-            <h1>Welcome to Grails</h1>
-            <p>Congratulations, you have successfully started your first Grails application! At the moment
-            this is the default page, feel free to modify it to either redirect to a controller or display whatever
-            content you may choose. Below is a list of controllers that are currently deployed in this application,
-            click on each to execute its default action:</p>
+            <h1>Bienvenido a Rentamelo!</h1>
+            <p> Aqui va una descripcion de la aplicacion y que es lo que hace, etc. El punto es que sea concisa, pero que de una buena idea de que puede 
+            	esperar el usuario de la aplicacion. 
+            </p>
 
             <div id="controllerList" class="dialog">
-                <h2>Available Controllers:</h2>
+                <h2>Artículos destacados</h2>
                 <ul>
-                    <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-                        <li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-                    </g:each>
+                    	Aqui se colocaria una lista de artículos elegidos ya sea al azar o los que sean de usuarios con más actividad, etc. En caso de que el 
+                    	usuario haya ingresado, se podrían listar sus artículos o articulos que sean recomendados para el usuario en particular.   
                 </ul>
             </div>
         </div>

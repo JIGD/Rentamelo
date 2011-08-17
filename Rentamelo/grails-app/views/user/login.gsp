@@ -15,7 +15,7 @@
             <tbody>            
               <tr class="prop">
                 <td class="name">
-                  <label for="username">User name:</label>
+                  <label for="username">User names:</label>
                 </td>
                 <td>
                   <input type="text" id="username" name="username"/>
