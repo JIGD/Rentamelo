@@ -36,6 +36,10 @@ class BootStrap {
 				if (!adminUser.authorities.contains(adminRole)) {
 					SecUserSecRole.create adminUser, adminRole
 				}
+				
+				def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
+					details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
+					id:1231, photo:123, dateCreated: new Date(), deadLine: null, isSent:true ).save(failOnError: true)
 	}
     def destroy = {
     }

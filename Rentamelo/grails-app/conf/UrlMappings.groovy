@@ -10,7 +10,7 @@ class UrlMappings {
 		"/login/$action?"(controller: "login")
 		"/login/$action?"(controller: "logout")
 		
-		"/"(view:"/index")
+		"/"(controller: "main")
 		"500"(view:'/error')
 	}
 }

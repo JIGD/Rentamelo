@@ -1,3 +1,4 @@
+<%@ page import="com.rentamelo.Item" %>
 <html>
     <head>
         <title>Welcome to Grails</title>
@@ -56,27 +57,12 @@
             <div class="homePagePanel">
                 <div class="panelTop"></div>
                 <div class="panelBody">
-                 <!-- <h1>Application Status</h1>
-                    <ul>
-                        <li>App version: <g:meta name="app.version"></g:meta></li>
-                        <li>Grails version: <g:meta name="app.grails.version"></g:meta></li>
-                        <li>Groovy version: ${org.codehaus.groovy.runtime.InvokerHelper.getVersion()}</li>
-                        <li>JVM version: ${System.getProperty('java.version')}</li>
-                        <li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-                        <li>Domains: ${grailsApplication.domainClasses.size()}</li>
-                        <li>Services: ${grailsApplication.serviceClasses.size()}</li>
-                        <li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-                    </ul>
-                    <h1>Installed Plugins</h1>
-                    <ul>
-                        <g:set var="pluginManager"
-                               value="${applicationContext.getBean('pluginManager')}"></g:set>
 
-                        <g:each var="plugin" in="${pluginManager.allPlugins}">
-                            <li>${plugin.name} - ${plugin.version}</li>
-                        </g:each>
+                                
+                    
+            
 
-                    </ul> --> 
+                    
       
      <sec:ifLoggedIn>
      <li>Hola, <sec:username/></li> 
@@ -95,7 +81,7 @@
                         <li>Categoria 2</li>
                         <li>Categoria 3</li>
                         <li>Otra Categoría</li>
-                </ul
+                </ul>
                 
                 </div>
                 <div class="panelBtm"></div>
@@ -110,6 +96,31 @@
             <div id="controllerList" class="dialog">
                 <h2>Artículos destacados</h2>
                 <ul>
+                <div class="itemList">
+                <table>
+                    <tbody>
+                    <g:each in="${itemInstanceList}" status="i" var="itemInstance">
+                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
+                        
+                        
+                            <td>${fieldValue(bean: itemInstance, field: "name")}</td>
+                        
+                            <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
+                        
+                            <td>${fieldValue(bean: itemInstance, field: "photo")}</td>
+                            
+                            <td><g:formatDate date="${itemInstance.dateCreated}" /></td>
+                        
+                            <td><g:formatDate date="${itemInstance.deadLine}" /></td>
+                        
+                            <td>${fieldValue(bean: itemInstance, field: "details")}</td>
+                        
+                        </tr>
+                    </g:each>
+                    </tbody>
+                </table>
+            </div>
+                
                     	Aqui se colocaria una lista de artículos elegidos ya sea al azar o los que sean de usuarios con más actividad, etc. En caso de que el 
                     	usuario haya ingresado, se podrían listar sus artículos o articulos que sean recomendados para el usuario en particular.   
                 </ul>

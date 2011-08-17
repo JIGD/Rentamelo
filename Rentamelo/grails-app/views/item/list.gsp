@@ -29,6 +29,8 @@
                             <g:sortableColumn property="summary" title="${message(code: 'item.summary.label', default: 'Summary')}" />
                         
                             <g:sortableColumn property="photo" title="${message(code: 'item.photo.label', default: 'Photo')}" />
+                           
+                            <g:sortableColumn property="dateCreated" title="${message(code: 'item.dateCreated.label', default: 'Date Created')}" />
                         
                             <g:sortableColumn property="deadLine" title="${message(code: 'item.deadLine.label', default: 'Dead Line')}" />
                         
@@ -47,6 +49,8 @@
                             <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
                         
                             <td>${fieldValue(bean: itemInstance, field: "photo")}</td>
+                            
+                            <td><g:formatDate date="${itemInstance.dateCreated}" /></td>
                         
                             <td><g:formatDate date="${itemInstance.deadLine}" /></td>
                         
