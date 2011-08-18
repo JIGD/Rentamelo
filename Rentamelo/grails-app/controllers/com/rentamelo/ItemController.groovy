@@ -10,8 +10,9 @@ class ItemController {
 
     def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
-    }
+      [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
+    	
+	}
 	
 
     def create = {

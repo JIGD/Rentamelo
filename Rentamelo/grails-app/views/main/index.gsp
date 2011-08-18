@@ -1,7 +1,7 @@
 <%@ page import="com.rentamelo.Item" %>
 <html>
     <head>
-        <title>Welcome to Grails</title>
+        <title>Bienvenido a Rentamelo!</title>
         <meta name="layout" />
         <link rel="stylesheet" href="${resource(dir:'css',file:'main.css')}" />
         <style type="text/css" media="screen">
@@ -96,7 +96,12 @@
             <div id="controllerList" class="dialog">
                 <h2>Artículos destacados</h2>
                 <ul>
-                <div class="itemList">
+            
+            	<div class="span-20"> 
+            	<g:render template="itemCard" collection="${items}" var="item"/>
+        		</div>
+               
+            <!--  <div class="itemList">
                 <table>
                     <tbody>
                     <g:each in="${itemInstanceList}" status="i" var="itemInstance">
@@ -114,12 +119,13 @@
                             <td><g:formatDate date="${itemInstance.deadLine}" /></td>
                         
                             <td>${fieldValue(bean: itemInstance, field: "details")}</td>
-                        
+                        	
+                        	
                         </tr>
                     </g:each>
                     </tbody>
                 </table>
-            </div>
+            </div>  -->
                 
                     	Aqui se colocaria una lista de artículos elegidos ya sea al azar o los que sean de usuarios con más actividad, etc. En caso de que el 
                     	usuario haya ingresado, se podrían listar sus artículos o articulos que sean recomendados para el usuario en particular.   
