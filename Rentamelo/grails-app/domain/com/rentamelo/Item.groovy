@@ -1,10 +1,10 @@
 package com.rentamelo
 
 class Item {
-	
-	static searchable = {
-		spellCheck = "include"
-		}
+//cambio	
+	static searchable = true /*{
+		mapping {spellCheck = "include"}
+		}*/
 	String name
 	String summary // vista pequeña
 	String details // detalles
