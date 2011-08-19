@@ -53,6 +53,10 @@
         </style>
     </head>
     <body>
+        <g:form url='[controller: "searchable", action: "index"]' id="searchableForm" name="searchableForm" method="get">
+        <g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Buscar" />
+    	</g:form>
+        
         <div id="nav">
             <div class="homePagePanel">
                 <div class="panelTop"></div>
@@ -97,6 +101,7 @@
                 <h2>Artículos destacados</h2>
                 <ul>
             
+            	<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
             	<div class="span-20"> 
             	<g:render template="itemCard" collection="${items}" var="item"/>
         		</div>

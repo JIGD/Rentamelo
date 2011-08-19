@@ -2,7 +2,7 @@ package com.rentamelo
 
 class Item {
 	
-	
+	static searchable = true // con esto habilitamos la busqueda de esta clase
 	String name
 	String summary // vista pequeña
 	String details // detalles
