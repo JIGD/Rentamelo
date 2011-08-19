@@ -12,6 +12,7 @@ class UrlMappings {
 		
 		"/"(controller: "main")
 		"500"(view:'/error')
-		"/buscar"(controller: "searchable")
+		"/buscar"(controller: "search")
+		"/search"(controller: "search")
 	}
 }

@@ -53,7 +53,7 @@
         </style>
     </head>
     <body>
-        <g:form url='[controller: "searchable", action: "index"]' id="searchableForm" name="searchableForm" method="get">
+        <g:form url='[controller: "search", action: "index"]' id="searchableForm" name="searchableForm" method="get">
         <g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Buscar" />
     	</g:form>
         
