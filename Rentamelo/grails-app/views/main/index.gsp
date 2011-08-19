@@ -53,9 +53,6 @@
         </style>
     </head>
     <body>
-        <g:form url='[controller: "search", action: "index"]' id="searchableForm" name="searchableForm" method="get">
-        <g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Buscar" />
-    	</g:form>
         
         <div id="nav">
             <div class="homePagePanel">
@@ -96,41 +93,19 @@
             <p> Aqui va una descripcion de la aplicacion y que es lo que hace, etc. El punto es que sea concisa, pero que de una buena idea de que puede 
             	esperar el usuario de la aplicacion. 
             </p>
-
+			
+			 <g:form url='[controller: "search", action: "index"]' id="searchableForm" name="searchableForm" method="get">
+        	<g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Buscar" />
+    		</g:form>
+			
             <div id="controllerList" class="dialog">
                 <h2>Artículos destacados</h2>
                 <ul>
             
             	<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
             	<div class="span-20"> 
-            	<g:render template="itemCard" collection="${items}" var="item"/>
-        		</div>
-               
-            <!--  <div class="itemList">
-                <table>
-                    <tbody>
-                    <g:each in="${itemInstanceList}" status="i" var="itemInstance">
-                        <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
-                        
-                            <td>${fieldValue(bean: itemInstance, field: "name")}</td>
-                        
-                            <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
-                        
-                            <td>${fieldValue(bean: itemInstance, field: "photo")}</td>
-                            
-                            <td><g:formatDate date="${itemInstance.dateCreated}" /></td>
-                        
-                            <td><g:formatDate date="${itemInstance.deadLine}" /></td>
-                        
-                            <td>${fieldValue(bean: itemInstance, field: "details")}</td>
-                        	
-                        	
-                        </tr>
-                    </g:each>
-                    </tbody>
-                </table>
-            </div>  -->
+            	<g:render template="/item/itemCard" collection="${items}" var="item"/>
+        		</div>               
                 
                     	Aqui se colocaria una lista de artículos elegidos ya sea al azar o los que sean de usuarios con más actividad, etc. En caso de que el 
                     	usuario haya ingresado, se podrían listar sus artículos o articulos que sean recomendados para el usuario en particular.   
