@@ -1,7 +1,6 @@
 package com.rentamelo
 import org.compass.core.engine.SearchEngineQueryParseException
 
-import org.compass.core.engine.SearchEngineQueryParseException
 
 
 class SearchController {
