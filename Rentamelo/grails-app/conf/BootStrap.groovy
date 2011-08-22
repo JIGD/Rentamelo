@@ -39,20 +39,20 @@ class BootStrap {
 				
 				def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
 					details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-					id:1231, photo:new File('C:/Users/igonzalez/Desktop/pez.jpg'), dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
+					photo:new File('C:/pez2.jpg').getBytes() , dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
 
 					item = new Item(name:"Otra Cosa", summary:"Este es otro articulo disponible para renta",
 						details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-						id:1232, photo:123, dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
+						photo:new File('C:/pez2.jpg').getBytes(), dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
 					item = new Item(name:"Otra Cosa mas", summary:"Este es otro articulo mas disponible para renta",
 							details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-							id:1233, photo:123, dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
+							photo:new File('C:/pez2.jpg').getBytes(), dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
 					item = new Item(name:"Una ultima cosa", summary:"Este es el ultimo articulo disponible para renta",
 						    details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-							id:1234, photo:123, dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
+							photo:new File('C:/pez2.jpg').getBytes(), dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
 					item = new Item(name:"Descripcion larga", summary:"Este articulo tiene mucho texto en el campo detalles. ",
 							details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres. Aunque para este articulo en particular, este campo es llenado con mucho texto, con la intencion de ver como se comportan las plantillas de diseño. Igual no debe de pasarse de los mil caracteres.",
-							id:1234, photo:123, dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
+							photo:null, dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
 							
 	}
     def destroy = {
