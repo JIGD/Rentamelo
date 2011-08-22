@@ -17,6 +17,7 @@
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
+            
             <div class="list">
                 <table>
                     <thead>
@@ -28,7 +29,7 @@
                         
                             <g:sortableColumn property="summary" title="${message(code: 'item.summary.label', default: 'Summary')}" />
                         
-                            <g:sortableColumn property="photo" title="${message(code: 'item.photo.label', default: 'Photo')}" />
+                            <g:sortableColumn property="photo" title="${message(code: 'item.photo.label', default: 'Photo')}" /> 
                            
                             <g:sortableColumn property="dateCreated" title="${message(code: 'item.dateCreated.label', default: 'Date Created')}" />
                         
@@ -48,7 +49,7 @@
                         
                             <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
                         
-                            <td>${fieldValue(bean: itemInstance, field: "photo")}</td>
+                            <td><img src="${createLink(controller:'item', action:'image', id: itemInstance.id)}"/></td>
                             
                             <td><g:formatDate date="${itemInstance.dateCreated}" /></td>
                         
@@ -67,3 +68,5 @@
         </div>
     </body>
 </html>
+
+

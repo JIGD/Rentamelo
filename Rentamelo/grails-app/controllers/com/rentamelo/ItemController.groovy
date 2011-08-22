@@ -61,7 +61,7 @@ class ItemController {
                 def version = params.version.toLong()
                 if (itemInstance.version > version) {
                     
-                    itemInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'item.label', default: 'Item')] as Object[], "Another user has updated this Item while you were editing")
+                    itemInstance.errors.rejectValue("version", "default.optimistic.locking.failure", [message(code: 'item.label', default: 'Item')] as Object[], "Another item has updated this Item while you were editing")
                     render(view: "edit", model: [itemInstance: itemInstance])
                     return
                 }
@@ -99,4 +99,11 @@ class ItemController {
             redirect(action: "list")
         }
     }
+	
+	def image= {
+		def item = Item.get( params.id )
+		byte[] photo = item.photo
+		response.outputStream << photo
+		}
+	
 }

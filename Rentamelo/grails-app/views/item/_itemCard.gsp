@@ -3,7 +3,7 @@
   
  	<td>
  	<div>
- 		<h2>Photo</h2>
+ 		<img src="${createLink(controller:'item', action:'image', id: item.id)}"/>
 	</div>
 	</td>
  	<td>
