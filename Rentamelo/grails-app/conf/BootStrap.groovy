@@ -39,7 +39,7 @@ class BootStrap {
 				
 				def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
 					details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-					id:1231, photo:'C:/Users/igonzalez/Desktop/pez.jpg', dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
+					id:1231, photo:new File('C:/Users/igonzalez/Desktop/pez.jpg'), dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
 
 					item = new Item(name:"Otra Cosa", summary:"Este es otro articulo disponible para renta",
 						details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
