@@ -3,7 +3,6 @@ package com.rentamelo
 class Tag {
 	String name
 	
-	static hasMany = [items : Item]
 	static belongsTo = Item
 	
     static constraints = {
