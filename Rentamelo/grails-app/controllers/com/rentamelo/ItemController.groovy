@@ -106,14 +106,17 @@ class ItemController {
 		byte[] photo
 		if(item.photo == null)
 			photo = new File('web-app/images/nodisponible.jpg').getBytes()	
-		else		
+		else	{	
 			photo = item.photo
-			
 		response.outputStream << photo
+		response.outputStream.flush()
 		}
+
+    }
 	
 	def currentUser(){
 		return User.get(springSecurityService.principal.id)
 	}
+
 }
 
