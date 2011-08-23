@@ -76,7 +76,7 @@
      <li><g:link controller = "signup">Inscribirse</g:link></li>
      <li><g:link url= "login/auth">Ingresar</g:link></li>     
      </sec:ifNotLoggedIn>           
-                
+                <!--  
                 <h1>Lista de Categorias:</h1>
                  <ul>
                         <li>Categoria 1</li>
@@ -84,7 +84,7 @@
                         <li>Categoria 3</li>
                         <li>Otra Categoría</li>
                 </ul>
-                
+                -->
                 </div>
                 <div class="panelBtm"></div>
             </div>
@@ -106,10 +106,8 @@
             	<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
             	<div class="span-20"> 
             	<g:render template="/item/itemCard" collection="${items}" var="item"/>
-        		</div>               
-                
-                    	Aqui se colocaria una lista de artículos elegidos ya sea al azar o los que sean de usuarios con más actividad, etc. En caso de que el 
-                    	usuario haya ingresado, se podrían listar sus artículos o articulos que sean recomendados para el usuario en particular.   
+        		</div>        
+        		
                 </ul>
             </div>
         </div>

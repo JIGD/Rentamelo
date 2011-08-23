@@ -1,7 +1,8 @@
 package com.rentamelo
 
 class ItemController {
-
+	
+	def springSecurityService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -22,7 +23,8 @@ class ItemController {
 
     def save = {
         def itemInstance = new Item(params)
-        if (itemInstance.save(flush: true)) {
+        itemInstance.user = currentUser()
+		if (itemInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])}"
             redirect(action: "show", id: itemInstance.id)
         }
@@ -110,4 +112,8 @@ class ItemController {
 		response.outputStream << photo
 		}
 	
+	def currentUser(){
+		return User.get(springSecurityService.principal.id)
+	}
 }
+
