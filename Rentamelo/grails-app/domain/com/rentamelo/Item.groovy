@@ -27,7 +27,7 @@ class Item {
 		details blank:false, maxSize:3000
 		isSent nullable:false
 		photoType(nullable:true)
-		user nullable:true
+		user nullable:false
     }
 	
 	String toString(){
