@@ -4,6 +4,8 @@ class UserController {
 	
 	static scaffold = User
 	
+	def springSecurityService
+	
 	def login = {}
 	
 	def items= {
@@ -12,4 +14,19 @@ class UserController {
 			
 	}
 	
+	def index = {
+		def userInstance =currentUser()
+		if (!userInstance) {
+			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])}"
+			redirect(action: "list")
+		}
+		else {
+			[userInstance: userInstance]
+		}
+	
+	
+}
+	def currentUser(){
+		return User.get(springSecurityService.principal.id)
+	   }
 }
