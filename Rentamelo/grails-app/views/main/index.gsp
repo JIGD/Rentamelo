@@ -1,5 +1,4 @@
 <%@ page import="com.rentamelo.Item" %>
-<%@ page import="com.rentamelo.Tag" %>
 <html>
     <head>
         <title>Bienvenido a Rentamelo!</title>
@@ -12,6 +11,7 @@
             margin-left:30px;
             width:228px;
             float:left;
+            
         }
         .homePagePanel * {
             margin:0px;
@@ -62,6 +62,7 @@
                                 
                     
             
+            
 
                     
       
@@ -76,15 +77,15 @@
      <li><g:link controller = "signup">Inscribirse</g:link></li>
      <li><g:link url= "login/auth">Ingresar</g:link></li>     
      </sec:ifNotLoggedIn>           
-                
-                 <ul>
-                                                       
-                            
-                    
+                <!--  
                 <h1>Lista de Categorias:</h1>
-
+                 <ul>
+                        <li>Categoria 1</li>
+                        <li>Categoria 2</li>
+                        <li>Categoria 3</li>
+                        <li>Otra Categoría</li>
                 </ul>
-                
+                -->
                 </div>
                 <div class="panelBtm"></div>
             </div>
@@ -101,14 +102,15 @@
 			
             <div id="controllerList" class="dialog">
                 <h2>Artículos destacados</h2>
-                <ul>
-            
+                <ul>           
+                
             	<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
             	<div class="span-20"> 
             	<g:render template="/item/itemCard" collection="${items}" var="item"/>
-        		</div>                 
+        		</div>        
+        		
                 </ul>
             </div>
-        </div>
+    </div>
     </body>
 </html>

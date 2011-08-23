@@ -15,6 +15,7 @@ class Item {
 	String photoType
 	boolean isSent = false // para saber si se envia o no 
 	
+	
 	static belongsTo = [user:User]
 	static hasMany = [tags : Tag]
 	
