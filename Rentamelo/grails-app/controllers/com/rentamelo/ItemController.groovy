@@ -14,6 +14,11 @@ class ItemController {
     	
 	}
 	
+	def myItems= {
+		
+		def myItems = Item.findAllByUser(sec:username,[sort:'deadLine',order:'asc']) 
+	}
+	
 
     def create = {
         def itemInstance = new Item()
