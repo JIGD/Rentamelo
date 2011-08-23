@@ -14,7 +14,7 @@ class SearchController {
             return [:]
         }
         try {
-            return [searchResult: searchableService.search(params.q, params)]
+            return [searchResult: searchableService.search(params.q, suggestQuery: true)]
         } catch (SearchEngineQueryParseException ex) {
             return [parseException: true]
         }
