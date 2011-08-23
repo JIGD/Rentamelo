@@ -37,9 +37,14 @@ class BootStrap {
 					SecUserSecRole.create adminUser, adminRole
 				}
 				
+				def tag = new Tag(name:"Carros").save(failOnError:true)
+				tag = new Tag(name:"Peces").save(failOnError:true)
+				tag = new Tag(name:"Computadoras").save(failOnError:true)
+				tag = new Tag(name:"Musica").save(failOnError:true)
+				
 				def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
 					details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-					photo:new File('C:/pez1.jpg').getBytes() , dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
+					photo:new File('C:/pez1.jpg').getBytes() , dateCreated: new Date(), deadLine: new Date(), isSent:true, tags:tag.get(2) ).save(failOnError: true)
 
 					item = new Item(name:"Otra Cosa", summary:"Este es otro articulo disponible para renta",
 						details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
@@ -53,6 +58,9 @@ class BootStrap {
 					item = new Item(name:"Descripcion larga", summary:"Este articulo tiene mucho texto en el campo detalles. ",
 							details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres. Aunque para este articulo en particular, este campo es llenado con mucho texto, con la intencion de ver como se comportan las plantillas de diseño. Igual no debe de pasarse de los mil caracteres.",
 							photo:null, dateCreated: new Date(), deadLine: new Date(), isSent:true ).save(failOnError: true)
+							
+
+							
 							
 	}
     def destroy = {
