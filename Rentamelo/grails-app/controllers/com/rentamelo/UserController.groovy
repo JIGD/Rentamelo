@@ -8,11 +8,15 @@ class UserController {
 	
 	def login = {}
 	
+	static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+	
 	def items= {
 		
 		def items = Item.findAllByUser(sec:username,[sort:'deadLine',order:'asc'])
 			
 	}
+	
+	
 	
 	def index = {
 		def userInstance =currentUser()

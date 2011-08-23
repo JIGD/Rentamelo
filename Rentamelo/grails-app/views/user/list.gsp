@@ -28,7 +28,7 @@
                         
                             <g:sortableColumn property="password" title="${message(code: 'user.password.label', default: 'Password')}" />
                         
-                            <g:sortableColumn property="fullName" title="${message(code: 'user.fullName.label', default: 'Full Name')}" />
+                            <g:sortableColumn property="fullName" title="${message(code: 'user.fullName.label', default: 'Nombre Completo')}" />
                         
                             <g:sortableColumn property="email" title="${message(code: 'user.email.label', default: 'Email')}" />
                         

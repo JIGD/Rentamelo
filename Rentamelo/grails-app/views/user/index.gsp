@@ -27,14 +27,7 @@
                             <td valign="top" class="value">${fieldValue(bean: userInstance, field: "username")}</td>
                             
                         </tr>
-                    
-                        <tr class="prop">
-                            <td valign="top" class="name"><g:message code="user.password.label" default="Password" /></td>
-                            
-                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "password")}</td>
-                            
-                        </tr>
-                    
+                                        
                         <tr class="prop">
                             <td valign="top" class="name"><g:message code="user.fullName.label" default="Full Name" /></td>
                             
