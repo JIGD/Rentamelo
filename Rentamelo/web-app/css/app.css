@@ -6,6 +6,12 @@
 	padding: 1.0em;	
 }
 
+.itemText{
+	position: relative;
+	bottom: 1.5em;
+	left:1.5em;
+}
+
 .deadline{
 	position: absolute;
 	bottom: 1.5em;
