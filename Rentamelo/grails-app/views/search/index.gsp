@@ -1,6 +1,7 @@
 <%@ page import="org.springframework.util.ClassUtils" %>
 <%@ page import="grails.plugin.searchable.internal.lucene.LuceneUtils" %>
 <%@ page import="grails.plugin.searchable.internal.util.StringQueryUtils" %>
+<%@ page import="com.rentamelo.Item" %>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
