@@ -74,9 +74,7 @@
                             <td valign="top" style="text-align: left;" class="value">
                                 <ul>
                                 <g:each in="${userInstance.items}" var="i">
-                                    <li><g:link controller="item" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
-                                    <li>
-                                    
+                                    <li><g:link controller="item" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>                                    
                                 </g:each>
                                 </ul>
                             </td>

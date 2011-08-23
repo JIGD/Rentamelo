@@ -106,8 +106,8 @@ class ItemController {
 			photo = new File('web-app/images/nodisponible.jpg').getBytes()	
 		else	{	
 			photo = item.photo
+		}
 		response.outputStream << photo
 		response.outputStream.flush()
-		}
     }
 }
