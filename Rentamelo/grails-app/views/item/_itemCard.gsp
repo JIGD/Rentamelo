@@ -7,7 +7,7 @@
 	</div>
 	</td>
  	<td>
- 	<div>   
+ 	<div >   
    			<h3>${ item.name}</h3><br/>
     		<h4>${ item.summary}</h4><br/>
     		<div>${ item.details }</div><br/>
