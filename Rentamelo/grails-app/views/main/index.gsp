@@ -66,8 +66,9 @@
                     
       
      <sec:ifLoggedIn>
-     <li>Hola, <sec:username/></li> 
+     <h1> Hola, <sec:username/></h1> 
      <li><g:link controller = "logout">Salir</g:link></li>
+     <li><g:link url = "item/create">Crear articulo</g:link></li>
      </sec:ifLoggedIn>
         
      <sec:ifNotLoggedIn>           

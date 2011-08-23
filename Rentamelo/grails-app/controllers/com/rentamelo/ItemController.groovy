@@ -102,7 +102,12 @@ class ItemController {
 	
 	def image= {
 		def item = Item.get( params.id )
-		byte[] photo = item.photo
+		byte[] photo
+		if(item.photo == null)
+			photo = new File('web-app/images/nodisponible.jpg').getBytes()	
+		else		
+			photo = item.photo
+			
 		response.outputStream << photo
 		}
 	

@@ -6,7 +6,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
+        <title>Publicar nuevo articulo</title>
+     
     </head>
     <body>
         <div class="nav">
@@ -14,7 +15,7 @@
             <span class="menuButton"><g:link class="list" action="list"><g:message code="default.list.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
-            <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+            <h1>Publicar nuevo articulo</h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
@@ -30,7 +31,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="name"><g:message code="item.name.label" default="Name" /></label>
+                                    <label for="name"><g:message code="item.name.label" default="Titulo" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'name', 'errors')}">
                                     <g:textField name="name" value="${itemInstance?.name}" />
@@ -39,7 +40,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="summary"><g:message code="item.summary.label" default="Summary" /></label>
+                                    <label for="summary"><g:message code="item.summary.label" default="Resumen" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'summary', 'errors')}">
                                     <g:textField name="summary" value="${itemInstance?.summary}" />
@@ -48,7 +49,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="photo"><g:message code="item.photo.label" default="Photo" /></label>
+                                    <label for="photo"><g:message code="item.photo.label" default="Foto" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'photo', 'errors')}">
                                     <input type="file" id="photo" name="photo" />
@@ -57,7 +58,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="deadLine"><g:message code="item.deadLine.label" default="Dead Line" /></label>
+                                    <label for="deadLine"><g:message code="item.deadLine.label" default="Fecha de vencimiento" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'deadLine', 'errors')}">
                                     <g:datePicker name="deadLine" precision="day" value="${itemInstance?.deadLine}" default="none" noSelection="['': '']" />
@@ -66,7 +67,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="details"><g:message code="item.details.label" default="Details" /></label>
+                                    <label for="details"><g:message code="item.details.label" default="Detalles" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'details', 'errors')}">
                                     <g:textArea name="details" cols="40" rows="5" value="${itemInstance?.details}" />
@@ -75,7 +76,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="isSent"><g:message code="item.isSent.label" default="Is Sent" /></label>
+                                    <label for="isSent"><g:message code="item.isSent.label" default="Ya fue enviado" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'isSent', 'errors')}">
                                     <g:checkBox name="isSent" value="${itemInstance?.isSent}" />
