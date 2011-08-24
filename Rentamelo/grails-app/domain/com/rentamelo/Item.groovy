@@ -3,8 +3,6 @@ package com.rentamelo
 class Item {	
 	static searchable ={
 		spellCheck "include"
-		user component : true
-		//except=['user']
 	}
 	String name
 	String summary // vista pequeña

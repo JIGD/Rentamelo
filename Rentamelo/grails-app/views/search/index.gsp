@@ -124,7 +124,7 @@
     <g:if test="${haveResults}">
       <div class="results">
       
-      <g:render template="/item/itemCard" collection="${searchResult.results}" var="item"/>
+      <g:render template="/item/itemCardSearch" collection="${searchResult.results}" var="item"/>
      
      
        
