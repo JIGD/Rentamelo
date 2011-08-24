@@ -3,6 +3,8 @@ package com.rentamelo
 class Item {	
 	static searchable ={
 		spellCheck "include"
+		user component : true
+		//except=['user']
 	}
 	String name
 	String summary // vista pequeña
@@ -13,10 +15,9 @@ class Item {
 	byte[] photo //foto del articulo
 	String photoType
 	boolean isSent = false // para saber si se envia o no 
-	
-	
-	static belongsTo = [user:User]
+	User user
 	static hasMany = [tags : Tag]
+	static fetchMode = [user:"eager"]
 	
     static constraints = {
 		name blank:false

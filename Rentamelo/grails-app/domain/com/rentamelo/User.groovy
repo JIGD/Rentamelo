@@ -1,7 +1,7 @@
 package com.rentamelo
 
 class User extends SecUser{
-	
+	static searchable =true
 	String fullName
 	String email
 	String address1
