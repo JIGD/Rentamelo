@@ -1,6 +1,6 @@
 <head>
 <meta name='layout' content='main' />
-<title><g:message code="springSecurity.login.title" /></title>
+<title>Ingresar</title>
 <style type='text/css' media='screen'>
 #login {
 	margin:15px 0px; padding:0px;
@@ -48,18 +48,18 @@
 			<g:if test='${flash.message}'>
 			<div class='login_message'>${flash.message}</div>
 			</g:if>
-			<div class='fheader'><g:message code="springSecurity.login.header" /></div>
+			<div class='fheader'><!--<g:message code="springSecurity.login.header" />--> Ingrese su nombre de usuario y contrase&ntildea</div>
 			<form action='${postUrl}' method='POST' id='loginForm' class='cssform' autocomplete='off'>
 				<p>
-					<label for='username'><g:message code="springSecurity.login.username.label" /></label>
+					<label for='username'><!-- <g:message code="springSecurity.login.username.label" />--> Nombre de usuario:</label>
 					<input type='text' class='text_' name='j_username' id='username' />
 				</p>
 				<p>
-					<label for='password'><g:message code="springSecurity.login.password.label" /></label>
+					<label for='password'><!--<g:message code="springSecurity.login.password.label" />--> Contrase&ntildea:</label>
 					<input type='password' class='text_' name='j_password' id='password' />
 				</p>
 				<p>
-					<label for='remember_me'><g:message code="springSecurity.login.remember.me.label" /></label>
+					<label for='remember_me'><!--<g:message code="springSecurity.login.remember.me.label" />-->Recordarme</label>
 					<input type='checkbox' class='chk' name='${rememberMeParameter}' id='remember_me'
 					<g:if test='${hasCookie}'>checked='checked'</g:if> />
 				</p>
