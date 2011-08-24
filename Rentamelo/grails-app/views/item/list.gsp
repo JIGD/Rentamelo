@@ -25,17 +25,17 @@
                         
                             <g:sortableColumn property="id" title="${message(code: 'item.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="name" title="${message(code: 'item.name.label', default: 'Name')}" />
+                            <g:sortableColumn property="name" title="Nombre" />
                         
-                            <g:sortableColumn property="summary" title="${message(code: 'item.summary.label', default: 'Summary')}" />
+                            <g:sortableColumn property="summary" title="Resumen" />
                         
-                            <g:sortableColumn property="photo" title="${message(code: 'item.photo.label', default: 'Photo')}" /> 
+                            <g:sortableColumn property="photo" title="Foto" /> 
                            
-                            <g:sortableColumn property="dateCreated" title="${message(code: 'item.dateCreated.label', default: 'Date Created')}" />
+                            <g:sortableColumn property="dateCreated" title="Fecha de creacion" />
                         
-                            <g:sortableColumn property="deadLine" title="${message(code: 'item.deadLine.label', default: 'Dead Line')}" />
+                            <g:sortableColumn property="deadLine" title="Fecha en que acaba" />
                         
-                            <g:sortableColumn property="details" title="${message(code: 'item.details.label', default: 'Details')}" />
+                            <g:sortableColumn property="details" title="Detalles" />
                         
                         </tr>
                     </thead>

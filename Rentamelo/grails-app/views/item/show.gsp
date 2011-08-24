@@ -14,7 +14,7 @@
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
         </div>
         <div class="body">
-            <h1>Listado de Articulo</h1>
+            <h1>Listado de Articulos</h1>
             <!--<g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>-->
@@ -25,8 +25,8 @@
             <div class="buttons">
                 <g:form>
                     <g:hiddenField name="id" value="${itemInstance?.id}" />
-                    <span class="button"><g:actionSubmit class="edit" action="edit" value="${message(code: 'default.button.edit.label', default: 'Edit')}" /></span>
-                    <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+                    <span class="button"><g:actionSubmit class="edit" action="edit" value="Editar}" /></span>
+                    <span class="button"><g:actionSubmit class="delete" action="delete" value="Borrar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Estas seguro?')}');" /></span>
                 </g:form>
             </div>
         </div>

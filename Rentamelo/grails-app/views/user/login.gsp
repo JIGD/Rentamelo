@@ -15,7 +15,7 @@
             <tbody>            
               <tr class="prop">
                 <td class="name">
-                  <label for="username">User names:</label>
+                  <label for="username">Nombre de usuario:</label>
                 </td>
                 <td>
                   <input type="text" id="username" name="username"/>
@@ -24,7 +24,7 @@
           
               <tr class="prop">
                 <td class="name">
-                  <label for="password">Password:</label>
+                  <label for="password">Contraseña:</label>
                 </td>
                 <td>
                   <input type="password" id="password" name="password"/>

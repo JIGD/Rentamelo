@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="body">
-  		  <h1>Logging in...</h1>
+  		  <h1>Conectandose...</h1>
   </div>
 </body>
 </html>
