@@ -9,13 +9,13 @@ class Item {
 	String details // detalles
 	long id = 0L
 	Date deadLine //fecha en que acaba el anuncio (si es que acaba)
-	Date dateCreated //fecha en que fue creado
+	Date dateCreated //fecha en que fue creado 
 	byte[] photo //foto del articulo
 	String photoType
 	boolean isSent = false // para saber si se envia o no 
 	User user
 	static hasMany = [tags : Tag]
-	static fetchMode = [user:"eager"]
+	//static fetchMode = [user:"eager"]
 	
     static constraints = {
 		name blank:false
@@ -32,4 +32,5 @@ class Item {
 	String toString(){
 		return name
 		}
+	
 }
