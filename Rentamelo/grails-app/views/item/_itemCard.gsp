@@ -4,11 +4,21 @@
   
  	<td>
  	<div>
- 		<img src="${createLink(controller:'item', action:'image', id: item.id)}"/>
+ 		<g:if test = "${item.photo != null}">
+ 			<g:if test = "${item.photo.size()}">
+ 				<img src="${createLink(controller:'item', action:'image', id: item.id)}"/>
+			</g:if>
+			<g:else>
+			<img src = "${resource(dir:'images',file:'nodisponible.jpg')}">
+			</g:else>	
+		</g:if>
+		<g:else>
+			<img src = "${resource(dir:'images',file:'nodisponible.jpg')}">
+		</g:else>	
 	</div>
 	</td>
  	<td>
- 	<div >   
+ 	<div>   
    			<h3>${ item.name}</h3><br/>
     		<h4>${ item.summary}</h4><br/>
     		<div>${ item.details }</div><br/>
