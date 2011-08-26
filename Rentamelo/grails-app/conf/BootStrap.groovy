@@ -36,15 +36,11 @@ class BootStrap {
 				if (!adminUser.authorities.contains(adminRole)) {
 					SecUserSecRole.create adminUser, adminRole
 				}
-				
-				def tag = new Tag(name:"Carros").save(failOnError:true)
-				tag = new Tag(name:"Peces").save(failOnError:true)
-				tag = new Tag(name:"Computadoras").save(failOnError:true)
-				tag = new Tag(name:"Musica").save(failOnError:true)
+
 				
 				def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
 					details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-					dateCreated: new Date(), deadLine: new Date(), isSent:true, tags:tag.get(2), user:User.findByUsername('admin')).save(failOnError: true)
+					dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin')).save(failOnError: true)
 
 					item = new Item(name:"Otra Cosa", summary:"Este es otro articulo disponible para renta",
 						details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",

@@ -1,6 +1,7 @@
 package com.rentamelo
+import org.grails.taggable.*
 
-class Item {	
+class Item implements Taggable{	
 	static searchable ={
 		spellCheck "include"
 	}
@@ -14,7 +15,7 @@ class Item {
 	String photoType
 	boolean isSent = false // para saber si se envia o no 
 	User user
-	static hasMany = [tags : Tag]
+	
 	//static fetchMode = [user:"eager"]
 	
     static constraints = {
