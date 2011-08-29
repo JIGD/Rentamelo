@@ -83,16 +83,7 @@
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'isSent', 'errors')}">
                                     <g:checkBox name="isSent" value="${itemInstance?.isSent}" />
                                 </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="tags"><g:message code="item.tags.label" default="Tags" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'tags', 'errors')}">
-                                    <g:select name="tags" from="${com.rentamelo.Tag.list()}" multiple="yes" optionKey="id" size="5" value="${itemInstance?.tags*.id}" />
-                                </td>
-                            </tr>
+                            </tr>                       
                         
                         </tbody>
                     </table>

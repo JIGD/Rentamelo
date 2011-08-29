@@ -105,9 +105,7 @@
                 <ul>           
                 
             	<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
-            	<div class="span-20"> 
-            	<g:render template="/item/itemCard" collection="${items}" var="item"/>
-        		</div>        
+            	<g:render template="/item/itemCard" collection="${items}" var="item"/>     
         		
                 </ul>
             </div>
