@@ -61,7 +61,7 @@
                                     <label for="deadLine"><g:message code="item.deadLine.label" default="Fecha de vencimiento" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'deadLine', 'errors')}">
-                                    <g:datePicker name="deadLine" precision="day" value="${itemInstance?.deadLine}" default="none" noSelection="['': '']" />
+                                    <g:datePicker name="deadLine" precision="day" value = "${new Date()}" default="none" noSelection="['':'']" years="${2010..2030}" />
                                 </td>
                             </tr>
                         

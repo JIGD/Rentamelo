@@ -24,7 +24,7 @@ class Item implements Taggable{
 		summary blank:false
 		photo nullable:true, maxSize: 60000 /* 16K */
 		id unique:true
-		deadLine nullable:true
+		deadLine nullable:true, min:new Date()
 		details blank:false, maxSize:3000
 		isSent nullable:false
 		photoType(nullable:true)
