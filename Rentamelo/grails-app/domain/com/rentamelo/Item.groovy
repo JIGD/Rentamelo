@@ -15,6 +15,7 @@ class Item implements Taggable{
 	String photoType
 	boolean isSent = false // para saber si se envia o no 
 	User user
+	static belongsTo = [category:Category];
 	
 	//static fetchMode = [user:"eager"]
 	
