@@ -22,7 +22,7 @@
    			<g:link action="show" controller="item" id="${item.id}"><h3>${ item.name}</h3></g:link><br/>
     		<h4>${ item.summary}</h4><br/>
     		<div>${ item.details }</div><br/>
-    		<div class = "deadLine">Vence: <g:formatDate format = "dd-mm-yyyy" date = "${item.deadLine}" /> </div><br/>
+    		<div class = "deadLine">Vence: <g:formatDate format = "dd-MMMM-yyyy" date = "${item.deadLine}" /> </div><br/>
  	</div>   
     </td>
   
