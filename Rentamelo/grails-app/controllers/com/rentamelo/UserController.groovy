@@ -1,5 +1,7 @@
 package com.rentamelo
+import grails.plugins.springsecurity.Secured
 
+@Secured(['IS_AUTHENTICATED_REMEMBERED'])
 class UserController {
 	
 	static scaffold = User
@@ -17,7 +19,7 @@ class UserController {
 	}
 	
 	
-	
+	@Secured(['ROLE_ADMIN'])
 	def index = {
 		def userInstance =currentUser()
 		if (!userInstance) {

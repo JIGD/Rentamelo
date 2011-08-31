@@ -96,12 +96,13 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'com.rentamelo.Se
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'com.rentamelo.SecUserSecRole'
 grails.plugins.springsecurity.authority.className = 'com.rentamelo.SecRole'
 
-grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
+/*grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
 grails.plugins.springsecurity.interceptUrlMap = [
 
 	
-	'/item/*':         ['IS_AUTHENTICATED_REMEMBERED'],
+	//'/item/*':         ['IS_AUTHENTICATED_REMEMBERED'],
+	'/item/*':         ['ROLE_USER','ROLE_ADMIN'],
 	'/user/*':         ['IS_AUTHENTICATED_REMEMBERED'],
 	'/**':             ['IS_AUTHENTICATED_ANONYMOUSLY']
-]
+]*/
 

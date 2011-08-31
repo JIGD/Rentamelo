@@ -77,15 +77,6 @@
      <li><g:link controller = "signup">Inscribirse</g:link></li>
      <li><g:link url= "login/auth">Ingresar</g:link></li>     
      </sec:ifNotLoggedIn>           
-                <!--  
-                <h1>Lista de Categorias:</h1>
-                 <ul>
-                        <li>Categoria 1</li>
-                        <li>Categoria 2</li>
-                        <li>Categoria 3</li>
-                        <li>Otra Categoría</li>
-                </ul>
-                -->
                 </div>
                 <div class="panelBtm"></div>
             </div>

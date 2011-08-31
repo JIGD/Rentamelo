@@ -8,9 +8,10 @@ class BootStrap {
 	def springSecurityService
     def init = { servletContext ->
 		
-		def adminRole = SecRole.findByAuthority('ROLE_ADMIN') ?: new SecRole(authority: 'ROLE_ADMIN').save(failOnError: true)
+		def role = SecRole.findByAuthority('ROLE_ADMIN') ?: new SecRole(authority: 'ROLE_ADMIN').save(failOnError: true)
+     		
 		
-		def adminUser = User.findByUsername('admin') ?: new User(
+		def user = User.findByUsername('admin') ?: new User(
 							username: 'admin',
 							password: 'admin',
 							//password: springSecurityService.encodePassword('admin'),
@@ -20,21 +21,23 @@ class BootStrap {
 							address1: 'Calle Falsa 123'
 							).save(failOnError: true) 
 							
-					if (!adminUser.authorities.contains(adminRole)) {
-						SecUserSecRole.create adminUser, adminRole
+					if (!user.authorities.contains(role)) {
+						SecUserSecRole.create user, role
 					}
-			adminUser = User.findByUsername('usuario') ?: new User(
+			
+			
+			role = SecRole.findByAuthority('ROLE_USER') ?: new SecRole(authority: 'ROLE_USER').save(failOnError: true)
+			user = User.findByUsername('usuario') ?: new User(
 						username: 'usuario',
-						//password: 'admin',
-						password: springSecurityService.encodePassword('password'),
+						password: 'password',
 						enabled: true,
 						fullName: 'Cosme Fulanito',
 						email: 'mail2@mailservice.com',
 						address1: 'Calle Falsa 123'
 						).save(failOnError: true)
 						
-				if (!adminUser.authorities.contains(adminRole)) {
-					SecUserSecRole.create adminUser, adminRole
+				if (!user.authorities.contains(role)) {
+					SecUserSecRole.create user, role
 				}
 
 				

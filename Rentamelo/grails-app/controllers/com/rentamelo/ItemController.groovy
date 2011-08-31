@@ -1,26 +1,32 @@
 package com.rentamelo
+import grails.plugins.springsecurity.Secured
+import grails.plugins.springsecurity.SecurityConfigType
+//grails.plugins.springsecurity.securityConfigType = SecurityConfigType.Annotation
 
+@Secured(['ROLE_USER','ROLE_ADMIN'])
 class ItemController {
 	
 	def springSecurityService
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
-
+	
+	@Secured(['ROLE_ADMIN'])
     def index = {
 		redirect(action: "list", params: params)
     }
 
-    def list = {
+   @Secured(['ROLE_ADMIN'])
+	def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
       [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
     	
 	}
-	
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def create = {
         def itemInstance = new Item()
         itemInstance.properties = params
         return [itemInstance: itemInstance]
     }
-
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def save = {
         def itemInstance = new Item(params)
         itemInstance.user = currentUser()
@@ -32,7 +38,7 @@ class ItemController {
             render(view: "create", model: [itemInstance: itemInstance])
         }
     }
-
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def show = {
         def itemInstance = Item.get(params.id)
         if (!itemInstance) {
@@ -43,7 +49,7 @@ class ItemController {
             [itemInstance: itemInstance]
         }
     }
-
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def edit = {
         def itemInstance = Item.get(params.id)
         if (!itemInstance) {
@@ -54,7 +60,7 @@ class ItemController {
             return [itemInstance: itemInstance]
         }
     }
-
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def update = {
         def itemInstance = Item.get(params.id)
         if (itemInstance) {
@@ -81,7 +87,7 @@ class ItemController {
             redirect(action: "list")
         }
     }
-
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def delete = {
         def itemInstance = Item.get(params.id)
         if (itemInstance) {

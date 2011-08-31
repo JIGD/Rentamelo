@@ -1,5 +1,8 @@
 package com.rentamelo
+import grails.plugins.springsecurity.SecurityConfigType
+import grails.plugins.springsecurity.Secured
 
+@Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
 class MainController {
 
     def index = {		
