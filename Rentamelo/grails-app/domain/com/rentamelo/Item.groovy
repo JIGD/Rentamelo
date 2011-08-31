@@ -15,7 +15,7 @@ class Item implements Taggable{
 	String photoType
 	boolean isSent = false // para saber si se envia o no 
 	User user
-	static belongsTo = [category:Category];
+	static belongsTo = [category:Category]
 	
 	//static fetchMode = [user:"eager"]
 	
@@ -29,6 +29,7 @@ class Item implements Taggable{
 		isSent nullable:false
 		photoType(nullable:true)
 		user nullable:false
+		category nullable:true
     }
 	
 	String toString(){
