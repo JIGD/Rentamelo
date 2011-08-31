@@ -1,10 +1,13 @@
 package com.rentamelo
 import org.grails.taggable.*
+import org.grails.attachmentable.*
 
 class Item implements Taggable{	
 	static searchable ={
 		spellCheck "include"
 	}
+	static attachmentable = true
+	
 	String name
 	String summary // vista pequeña
 	String details // detalles

@@ -106,3 +106,7 @@ grails.plugins.springsecurity.interceptUrlMap = [
 	'/**':             ['IS_AUTHENTICATED_ANONYMOUSLY']
 ]*/
 
+// Attachmentable plugin configs
+grails.attachmentable.poster.evaluator = { getPrincipal()}
+
+
