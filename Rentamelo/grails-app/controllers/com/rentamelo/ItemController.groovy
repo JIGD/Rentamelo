@@ -3,7 +3,7 @@ import grails.plugins.springsecurity.Secured
 import grails.plugins.springsecurity.SecurityConfigType
 //grails.plugins.springsecurity.securityConfigType = SecurityConfigType.Annotation
 
-@Secured(['ROLE_USER','ROLE_ADMIN'])
+//@Secured(['ROLE_USER','ROLE_ADMIN'])
 class ItemController {
 	
 	def springSecurityService
@@ -109,7 +109,7 @@ class ItemController {
 	
 	def image= {
 		def item = Item.get( params.id )
-		byte[] photo
+		/*byte[] photo
 		//if(item.photo == null)
 			//photo = new File('web-app/images/nodisponible.jpg').getBytes()	
 			//photo = resource(dir:'images',file :'nodisponible.jpg').getBytes()
@@ -118,7 +118,9 @@ class ItemController {
 		//}
 		response.outputStream << photo
 		response.outputStream.flush()
-
+        */
+		def photo = item.getAttachments('photo')
+		return photo    
     }
 	
 	def currentUser(){

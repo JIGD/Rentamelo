@@ -14,8 +14,7 @@ class Item implements Taggable{
 	long id = 0L
 	Date deadLine //fecha en que acaba el anuncio (si es que acaba)
 	Date dateCreated //fecha en que fue creado 
-	byte[] photo //foto del articulo
-	String photoType
+	boolean hasPhoto = false
 	boolean isSent = false // para saber si se envia o no 
 	User user
 	static belongsTo = [category:Category]
@@ -25,18 +24,27 @@ class Item implements Taggable{
     static constraints = {
 		name blank:false
 		summary blank:false
-		photo nullable:true, maxSize: 60000 /* 16K */
 		id unique:true
 		deadLine nullable:true, min:new Date()
 		details blank:false, maxSize:3000
 		isSent nullable:false
-		photoType(nullable:true)
 		user nullable:false
 		category nullable:true
+		hasPhoto nullable:false
     }
 	
 	String toString(){
 		return name
 		}
 	
+	transient def beforeDelete = {
+		withNewSession{
+			removeAttachments()
+		}
+	}
+	
+	def onAddAttachment = {attachment ->
+	// post processing logic for newly added attachment
+		hasPhoto = true
+	}
 }
