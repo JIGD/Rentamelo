@@ -23,4 +23,17 @@ class Category {
 		return items.collect { it }
 		}
 	
+	def ancestor(){
+		fathers(parent)
+		}
+		
+	def fathers(Category father){
+		if (father.parent==null){
+			return father			
+			}
+		else {
+			fathers(father.parent)
+			}
+		}
+		
 }
