@@ -120,7 +120,7 @@ class ItemController {
 		response.outputStream.flush()
         */
 		def photo = item.getAttachments('photo')
-		return photo    
+		return photo.id    
     }
 	
 	def currentUser(){
