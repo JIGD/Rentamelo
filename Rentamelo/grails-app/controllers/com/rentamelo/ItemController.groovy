@@ -109,18 +109,10 @@ class ItemController {
 	
 	def image= {
 		def item = Item.get( params.id )
-		/*byte[] photo
-		//if(item.photo == null)
-			//photo = new File('web-app/images/nodisponible.jpg').getBytes()	
-			//photo = resource(dir:'images',file :'nodisponible.jpg').getBytes()
-		//else	{	
-			photo = item.photo
-		//}
-		response.outputStream << photo
-		response.outputStream.flush()
-        */
-		def photo = item.getAttachments('photo')
-		return photo    
+		def attachments = item.attachments
+		def photo = attachments[0]
+		response.getOutputStream().write(photo.getBytes())
+		response.getOutputStream().flush()
     }
 	
 	def currentUser(){

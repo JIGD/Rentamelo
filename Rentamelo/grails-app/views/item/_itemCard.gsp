@@ -4,14 +4,12 @@
   
  	<td>
  	<div>
- 		<g:if test = "${item.hasPhoto}"> 			
+ 		<g:if test = "${item.hasPhoto==true}"> 			
  			<img src="${createLink(controller:'item', action:'image', id: item.id)}"/>	
 		</g:if>
 		<g:else>
 			<img src = "${resource(dir:'images',file:'nodisponible.jpg')}">
 		</g:else>	
-		
-	
 	</div>
 	</td>
  	<td>
@@ -21,7 +19,7 @@
     		<div>${ item.details }</div><br/>
     		<h4> Anunciante: ${ item.user.username}
     		</h4><br/>
- 			<div class = "deadLine">Vence: <g:formatDate format = "dd-MMMM-yyyy" date = "${item.deadLine}" /> </div>
+ 			<div class = "deadLine">Vence: <g:formatDate format = "dd-MM-yyyy" date = "${item.deadLine}" /> </div>
  	</div>   
     </td>
   
