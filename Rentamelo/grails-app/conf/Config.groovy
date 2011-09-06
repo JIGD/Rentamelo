@@ -107,6 +107,11 @@ grails.plugins.springsecurity.interceptUrlMap = [
 ]*/
 
 // Attachmentable plugin configs
+
+grails.attachmentable.maxInMemorySize = 1024
+grails.attachmentable.maxUploadSize = 1024000000
+grails.attachmentable.uploadDir = "c:/users/igonzalez/Rentamelo"
 grails.attachmentable.poster.evaluator = { getPrincipal()}
+grails.attachmentable.searchableFileConverter="attachmentFileConverter"
 
 

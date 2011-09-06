@@ -43,8 +43,7 @@ class Item implements Taggable{
 		}
 	}
 	
-	def onAddAttachment = {attachment ->
-	// post processing logic for newly added attachment
-		hasPhoto = true
-	}
+	def onAddAttachment = {
+		hasPhoto=true
+		}
 }

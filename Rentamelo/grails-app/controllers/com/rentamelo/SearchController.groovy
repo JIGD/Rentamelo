@@ -14,7 +14,7 @@ class SearchController {
             return [:]
         }
         try {
-			def result = Item.search(params.q, suggestQuery: true);
+			def result = Item.search(params.q);
             return [searchResult: result ]
         } catch (SearchEngineQueryParseException ex) {
             return [parseException: true]
