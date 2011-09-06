@@ -2,6 +2,8 @@ package com.rentamelo
 
 class CategoryController {
 
+	def categoryService
+	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
     def index = {
@@ -13,10 +15,6 @@ class CategoryController {
         [categoryInstanceList: Category.list(params), categoryInstanceTotal: Category.count()]
     }
 	
-	def ancestorList = {		
-		[categoryInstanceList: Category.list(params: params)]
-		}
-
     def create = {
         def categoryInstance = new Category()
         categoryInstance.properties = params
@@ -25,7 +23,7 @@ class CategoryController {
 
     def save = {
         def categoryInstance = new Category(params)
-        if (categoryInstance.save(flush: true)) {
+		if (categoryInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'category.label', default: 'Category'), categoryInstance.id])}"
             redirect(action: "show", id: categoryInstance.id)
         }

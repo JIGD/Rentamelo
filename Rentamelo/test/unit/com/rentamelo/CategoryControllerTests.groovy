@@ -11,14 +11,13 @@ class CategoryControllerTests extends ControllerUnitTestCase {
         super.tearDown()
     }
 
-    void testAncestorList() {
+    protected void testAncestorList() {
 		def father = new Category(name:"CategoriaP")
 		def son= new Category(name:"CategoriaH", parent:father)
 		def ancestor = new Category(name:"CategoriaAbuelo")
 		def testAncestors = [father, ancestor]
 		def controller = new CategoryController()
-		def ancestors = controller.ancestorList()
-		
+		def ancestors = controller.list()
 		assertEquals([testAncestors], ancestors )
 		}
 }

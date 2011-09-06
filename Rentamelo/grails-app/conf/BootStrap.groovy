@@ -40,7 +40,7 @@ class BootStrap {
 					SecUserSecRole.create user, role
 				}
 
-				def categ = new Category(name:"Cosas")
+				def categ = new Category(name:"Cosas").save()
 				def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
 					details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
 					dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin')).save(failOnError: true)
@@ -53,7 +53,8 @@ class BootStrap {
 							dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin') ).save(failOnError: true)
 					item = new Item(name:"Descripcion larga", summary:"Este articulo tiene mucho texto en el campo detalles. ",
 							details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres. Aunque para este articulo en particular, este campo es llenado con mucho texto, con la intencion de ver como se comportan las plantillas de diseño. Igual no debe de pasarse de los mil caracteres.",
-							dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin') ).save(failOnError: true)
+							dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin'), category:Category.findByName('Cosas') ).save(failOnError: true)
+							
 													
 							
 	}

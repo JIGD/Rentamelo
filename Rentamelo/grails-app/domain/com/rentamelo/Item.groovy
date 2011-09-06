@@ -11,7 +11,6 @@ class Item implements Taggable{
 	String name
 	String summary // vista pequeña
 	String details // detalles
-	long id = 0L
 	Date deadLine //fecha en que acaba el anuncio (si es que acaba)
 	Date dateCreated //fecha en que fue creado 
 	boolean hasPhoto = false

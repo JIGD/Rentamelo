@@ -16,4 +16,14 @@ class CategoryIntTests extends GroovyTestCase {
 		mockDomain(Category, testInstances)
 		assertEquals(2, Category.count())
 	  }
+	
+	protected void testAncestorList() {
+		def father = new Category(name:"CategoriaP")
+		def son= new Category(name:"CategoriaH", parent:father)
+		def ancestor = new Category(name:"CategoriaAbuelo")
+		def testAncestors = [father, ancestor]
+		def categoryService
+		def ancestors = categoryService.ancestorList()
+		assertEquals([testAncestors], ancestors )
+		}
 }

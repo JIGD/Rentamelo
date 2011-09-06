@@ -19,6 +19,9 @@
     		<div>${ item.details }</div><br/>
     		<h4> Anunciante: ${ item.user.username}
     		</h4><br/>
+    		<g:if test = "${item.category!=null}"> 	
+    		<h4>Categoria: ${ item.category.name} </h4></br>
+    		</g:if>
  			<div class = "deadLine">Vence: <g:formatDate format = "dd-MM-yyyy" date = "${item.deadLine}" /> </div>
  	</div>   
     </td>
