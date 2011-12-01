@@ -12,7 +12,7 @@ html * {
 }
 
 body {
-    background: #fff;
+    background: #0BE;
     color: #333;
     font: 11px verdana, arial, helvetica, sans-serif;
 }
@@ -25,16 +25,23 @@ a:link, a:visited, a:hover {
     font-weight: bold;
     text-decoration: none;
 }
-
+	
 h1 {
-    color: #48802c;
+    color: #FFF;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 24px;
     margin: .8em 0 .3em 0;
 }
 
 ul {
     padding-left: 15px;
+}
+
+p {
+	color: #55B;
+	font-style:bold;
+	font: 11px verdana, arial;
+	margin: .8em .5em .5em .5em;
 }
 
 input, select, textarea {
@@ -70,6 +77,10 @@ input:focus, select:focus, textarea:focus {
     border-style: solid none solid none;
     margin-top: 5px;
     padding: 7px 12px;
+}
+
+#pageBody{
+	background: #0BE;
 }
 
 .menuButton {
@@ -136,7 +147,7 @@ td.errors textarea {
 /* TABLES */
 
 table {
-    border: 1px solid #ccc;
+    border: 1px solid #999;
     width: 100%
 }
 tr {
