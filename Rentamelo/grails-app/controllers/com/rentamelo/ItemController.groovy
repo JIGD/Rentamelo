@@ -16,12 +16,14 @@ class ItemController {
     }
 	
 	def listByCategory = {
-		def prueba = Category.get(params.id)
+		//def categoryId = params.id
 		def itemList = Item.list()
-		def categoryItems = []
-		itemList.collect listByCategory(prueba.name)
-		System.out.println(prueba.name+" ++++++++++++++++++++++++++++++++++")
-		[itemInstanceList: itemList, itemInstanceTotal: itemList.count()]
+		def categoryItems = Item.findAllByCategory("Carros")
+	/*	itemList.each{if (it.category.id==categoryUsed ){
+			categoryItems.add(it)
+			}	
+		}*/
+		[itemInstanceList: categoryItems, itemInstanceTotal: categoryItems.count()]
 	}
 	
 	/*def listByCategory = {

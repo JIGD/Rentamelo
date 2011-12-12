@@ -76,9 +76,9 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="isSent"><g:message code="item.isSent.label" default="Ya fue enviado" /></label>
+                                    <label for="category"><g:message code="item.category.label" default="Categoria" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'isSent', 'errors')}">
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
                                     <g:checkBox name="isSent" value="${itemInstance?.isSent}" />
                                 </td>
                             </tr>

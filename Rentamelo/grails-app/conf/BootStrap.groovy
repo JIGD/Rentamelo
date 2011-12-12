@@ -52,6 +52,7 @@ class BootStrap {
 
 					item = new Item(name:"Casa en la joya", summary:"Ven y conoce la finura",
 						details:"Casa en la joya a solo 10000000000 pesos el dia",
+						category:Category.findByName('Casas'),
 						dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin')).save(failOnError: true)
 					
 						item = new Item(name:"Violin", summary:"Violin Barato",
