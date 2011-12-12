@@ -16,23 +16,18 @@ class ItemController {
     }
 	
 	def listByCategory = {
-		def categoryId = params.id
+	int categoryId = Integer.valueOf(params.id)
+	int categoryOnItemId = 0
 		def itemList = Item.list()
 		def categoryItems = []
-		itemList.each{if (it.category.id==categoryId ){
+		itemList.each{
+			categoryOnItemId = it.category.id
+			if (categoryOnItemId==categoryId ){
 			categoryItems.add(it)
 			}
-		System.out.println(categoryItems.count())	
-		}
-
+	}
 		[itemInstanceList: categoryItems, itemInstanceTotal: categoryItems.count()]
 	}
-	
-	/*def listByCategory = {
-		params.max = Math.min(params.max ? params.int('max') : 10, 100)
-	  [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
-		
-	}*/
 
    @Secured(['ROLE_ADMIN'])
 	def list = {
