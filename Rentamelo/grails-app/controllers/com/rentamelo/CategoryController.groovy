@@ -6,7 +6,13 @@ class CategoryController {
 	
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def index = {
+
+	
+	
+	
+	
+	
+	def index = {
         redirect(action: "list", params: params)
     }
 
@@ -14,6 +20,7 @@ class CategoryController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
         [categoryInstanceList: Category.list(params), categoryInstanceTotal: Category.count()]
     }
+	
 	
     def create = {
         def categoryInstance = new Category()

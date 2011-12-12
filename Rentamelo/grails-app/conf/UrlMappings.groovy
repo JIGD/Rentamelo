@@ -10,6 +10,9 @@ class UrlMappings {
 		"/login/$action?"(controller: "login")
 		"/login/$action?"(controller: "logout")
 		
+		"/item"(controller:"item")
+		"/item/itemByCategory/$id"(controller:"item", action:"itemByCategory")
+		
 		"/"(controller: "main")
 		"/500"(view:'/error')
 		"/buscar"(controller: "search")

@@ -40,20 +40,28 @@ class BootStrap {
 					SecUserSecRole.create user, role
 				}
 
-				def categ = new Category(name:"Cosas").save()
-				def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
-					details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
+				def categ = new Category(name:"Electrodomesticos").save()
+				categ = new Category(name:"Instrumentos").save()
+				categ = new Category(name:"Carros").save()
+				categ = new Category(name:"Casas").save()
+				
+				def item = new Item(name:"Plancha", summary:"Plancha nuevesita",
+					details:"Esta plancha esta curada, te la dejo barata",
+					category:Category.findByName("Electrodomesticos"),
 					dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin')).save(failOnError: true)
 
-					item = new Item(name:"Otra Cosa", summary:"Este es otro articulo disponible para renta",
-						details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
+					item = new Item(name:"Casa en la joya", summary:"Ven y conoce la finura",
+						details:"Casa en la joya a solo 10000000000 pesos el dia",
 						dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin')).save(failOnError: true)
-					item = new Item(name:"Otra Cosa mas", summary:"Este es otro articulo mas disponible para renta",
-							details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
+					
+						item = new Item(name:"Violin", summary:"Violin Barato",
+							details:"Este es un violin barato pero saca de apuro",
+							category:Category.findByName("Instrumentos"),
 							dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin') ).save(failOnError: true)
-					item = new Item(name:"Descripcion larga", summary:"Este articulo tiene mucho texto en el campo detalles. ",
-							details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres. Aunque para este articulo en particular, este campo es llenado con mucho texto, con la intencion de ver como se comportan las plantillas de diseño. Igual no debe de pasarse de los mil caracteres.",
-							dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin'), category:Category.findByName('Cosas') ).save(failOnError: true)
+					
+							item = new Item(name:"El bochomovil", summary:"Un bochito muy particular ",
+							details:"Lucete con lo inlucible rentando este bochomovil!",
+							dateCreated: new Date(), deadLine: new Date(), isSent:true, user:User.findByUsername('admin'), category:Category.findByName('Carros') ).save(failOnError: true)
 							
 													
 							

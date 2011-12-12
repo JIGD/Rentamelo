@@ -16,7 +16,7 @@ class Item implements Taggable{
 	boolean hasPhoto = false
 	boolean isSent = false // para saber si se envia o no 
 	User user
-	static belongsTo = [category:Category]
+	Category category
 	
 	//static fetchMode = [user:"eager"]
 	
@@ -34,6 +34,16 @@ class Item implements Taggable{
 	
 	String toString(){
 		return name
+		}
+	
+ def getByCategory(String categoryName){
+		Item.findAllByCategory(categoryName)
+		}
+	
+	String getByCategoryName(String categoryName){
+		if(this.category.name == categoryName){
+			return this
+			}
 		}
 	
 	transient def beforeDelete = {

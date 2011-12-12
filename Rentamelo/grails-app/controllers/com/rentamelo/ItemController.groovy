@@ -4,6 +4,7 @@ import grails.plugins.springsecurity.SecurityConfigType
 //grails.plugins.springsecurity.securityConfigType = SecurityConfigType.Annotation
 
 //@Secured(['ROLE_USER','ROLE_ADMIN'])
+
 class ItemController {
 	
 	def springSecurityService
@@ -13,13 +14,28 @@ class ItemController {
     def index = {
 		redirect(action: "list", params: params)
     }
+	
+	def listByCategory = {
+		def prueba = Category.get(params.id)
+		def itemList = Item.list()
+		def categoryItems = []
+		itemList.collect listByCategory(prueba.name)
+		System.out.println(prueba.name+" ++++++++++++++++++++++++++++++++++")
+		[itemInstanceList: itemList, itemInstanceTotal: itemList.count()]
+	}
+	
+	/*def listByCategory = {
+		params.max = Math.min(params.max ? params.int('max') : 10, 100)
+	  [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
+		
+	}*/
 
    @Secured(['ROLE_ADMIN'])
 	def list = {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-      [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]
-    	
+      [itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()]   	
 	}
+	
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def create = {
         def itemInstance = new Item()

@@ -1,4 +1,5 @@
 <%@ page import="com.rentamelo.Item" %>
+
 <html>
     <head>
         <title>Bienvenido a Rentamelo!</title>
@@ -57,6 +58,7 @@
         <div id="nav">
             <div class="homePagePanel">
                 <div class="panelTop"></div>
+                
                 <div class="panelBody">
 
                                 
@@ -67,9 +69,9 @@
                     
       
      <sec:ifLoggedIn>
-     <h1> Hola, <g:link url="[action:'index',controller:'user']"><sec:username/></g:link></h1> 
-     <li><g:link controller = "logout">Salir</g:link></li>
+     <li><g:link url="[action:'index',controller:'user']">Perfil</g:link> </li>
      <li><g:link url = "item/create">Crear articulo</g:link></li>
+     <li><g:link controller = "logout">Salir</g:link></li>
      </sec:ifLoggedIn>
         
      <sec:ifNotLoggedIn>           
@@ -78,25 +80,32 @@
      <li><g:link url= "login/auth">Ingresar</g:link></li>     
      </sec:ifNotLoggedIn>           
                 </div>
-                <div class="panelBtm"></div>
+                <div class="panelBtm">
+<br/>
+<h1>Categorias</h1>
+			            	<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
+			<g:render template="/category/CategoryCard" collection="${things[1]}" var="category"/>  
+			
+
+                </div>
             </div>
         </div>
+        
         <div id="pageBody">
-            <h1>Bienvenido a Rentamelo!</h1>
-            <p> Aqui va una descripcion de la aplicacion y que es lo que hace, etc. El punto es que sea concisa, pero que de una buena idea de que puede 
-            	esperar el usuario de la aplicacion. 
+            <h1>Bienvenido a Rentamelo, el sitio de rentas en hermosillo!</h1>
+            <p> <h2>Buscas algo por solo un momento o tienes algun objeto que no sueles usar? Este es tu lugar!</h2>
             </p>
 			
 			 <g:form url='[controller: "search", action: "index"]' id="searchableForm" name="searchableForm" method="get">
         	<g:textField name="q" value="${params.q}" size="50"/> <input type="submit" value="Buscar" />
     		</g:form>
-			
+
             <div id="controllerList" class="dialog">
-                <h2>Artículos destacados</h2>
+                <h2>Articulos destacados</h2>
                 <ul>           
                 
             	<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
-            	<g:render template="/item/itemCard" collection="${items}" var="item"/>     
+            	<g:render template="/item/itemCard" collection="${things[0]}" var="item"/>     
         		
                 </ul>
             </div>
