@@ -15,7 +15,7 @@ class Item implements Taggable{
 	Date dateCreated //fecha en que fue creado 
 	User user
 	Category category
-	byte[] picture
+	byte[] picture = 0
 	
 	//static fetchMode = [user:"eager"]
 	
@@ -26,6 +26,7 @@ class Item implements Taggable{
 		details blank:false, maxSize:3000
 		user nullable:false
 		category nullable:true
+		picture nullable:true
     }
 	
 	String toString(){

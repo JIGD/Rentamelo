@@ -4,7 +4,7 @@
   
  	<td>
  	<div>
- 		<g:if test = "${item.hasPhoto==true}"> 			
+ 		<g:if test = "${item.picture==0}"> 			
  			<img src="${createLink(controller:'item', action:'image', id: item.id)}"/>	
 		</g:if>
 		<g:else>
