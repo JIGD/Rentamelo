@@ -2,7 +2,7 @@ package com.rentamelo
 import org.grails.taggable.*
 import org.grails.attachmentable.*
 
-class Item implements Taggable{	
+class Item{	
 	static searchable ={
 		spellCheck "include"
 	}
