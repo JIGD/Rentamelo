@@ -39,7 +39,7 @@ class ItemController {
     def create = {
         def itemInstance = new Item()
         itemInstance.properties = params
-        return [itemInstance: itemInstance]
+        return [itemInstance: itemInstance, categoryInstance: Category.list()]
     }
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def save = {
@@ -123,11 +123,9 @@ class ItemController {
     }
 	
 	def image= {
-		def item = Item.get( params.id )
-				def attachments = item.attachments
-		def photo = attachments[0]
-		response.getOutputStream().write(photo.getBytes())
-		response.getOutputStream().flush()
+      def item = Item.get( params.id )
+      byte[] image = item.picture 
+      response.outputStream << image
     }
 	
 	def currentUser(){

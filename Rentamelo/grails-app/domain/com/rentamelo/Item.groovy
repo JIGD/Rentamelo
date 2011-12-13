@@ -13,23 +13,19 @@ class Item implements Taggable{
 	String details // detalles
 	Date deadLine //fecha en que acaba el anuncio (si es que acaba)
 	Date dateCreated //fecha en que fue creado 
-	boolean hasPhoto = false
-	boolean isSent = false // para saber si se envia o no 
 	User user
 	Category category
+	byte[] picture
 	
 	//static fetchMode = [user:"eager"]
 	
     static constraints = {
 		name blank:false
 		summary blank:false
-		id unique:true
 		deadLine nullable:true, min:new Date()
 		details blank:false, maxSize:3000
-		isSent nullable:false
 		user nullable:false
 		category nullable:true
-		hasPhoto nullable:false
     }
 	
 	String toString(){
