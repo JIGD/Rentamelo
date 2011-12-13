@@ -12,6 +12,7 @@ class MainController {
 		def categories = Category.list(sort:"name");
 		def things =[items, categories];
 		return [things:things]
+	
 	}
 	
 	def itemList = {

@@ -19,7 +19,7 @@ class UserController {
 	}
 	
 	
-	@Secured(['ROLE_ADMIN'])
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
 	def index = {
 		def userInstance =currentUser()
 		if (!userInstance) {
@@ -29,8 +29,6 @@ class UserController {
 		else {
 			[userInstance: userInstance]
 		}
-	
-	
 }
 	def currentUser(){
 		return User.get(springSecurityService.principal.id)

@@ -5,8 +5,7 @@ class User extends SecUser{
 	String fullName
 	String email
 	String address1
-	String address2
-	byte[] avatar
+	String telefono
 	
 	static hasMany = [items:Item]
 	
@@ -16,8 +15,7 @@ class User extends SecUser{
 		fullName blank:false
 		email nullable:false, unique:true
 		address1 blank:false
-		address2 nullable:true
-		avatar nullable:true, maxSize:32768	//32k	
+		telefono blank:true, nullable:true
 	}
 	
 	String toString(){
