@@ -27,12 +27,24 @@
                 <g:form>
                     <g:hiddenField name="id" value="${itemInstance?.id}" />
                    
-                    <span class="button"><g:actionSubmit class="edit" action="edit" value="Editar}" /></span>
+                    <span class="button"><g:actionSubmit class="edit" action="edit" value="Editar" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="Borrar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Estas seguro?')}');" /></span>
               
                 </g:form>
             </div>
               </sec:ifAnyGranted>
+<g:if test = "${itemInstance.user.username.equalsIgnoreCase(userName)}"> 	
+            <div class="buttons">
+                <g:form>
+                    <g:hiddenField name="id" value="${itemInstance?.id}" />
+                   
+                    <span class="button"><g:actionSubmit class="edit" action="edit" value="Editar" /></span>
+                    <span class="button"><g:actionSubmit class="delete" action="delete" value="Borrar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Estas seguro?')}');" /></span>
+              
+                </g:form>
+            </div>
+            </g:if>
+      
         </div>
     </body>
 </html>

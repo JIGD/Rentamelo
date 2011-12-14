@@ -39,6 +39,19 @@ class BootStrap {
 				if (!user.authorities.contains(role)) {
 					SecUserSecRole.create user, role
 				}
+				
+				user = User.findByUsername('jigd') ?: new User(
+					username: 'jigd',
+					password: '123456',
+					enabled: true,
+					fullName: 'jijijiji',
+					email: 'maillllll@mailservice.com',
+					address1: 'Calle Falsa 123'
+					).save(failOnError: true)
+					
+			if (!user.authorities.contains(role)) {
+				SecUserSecRole.create user, role
+			}
 
 				def categ = new Category(name:"Electrodomesticos").save()
 				categ = new Category(name:"Instrumentos").save()

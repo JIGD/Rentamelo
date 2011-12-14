@@ -51,15 +51,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="photo"><g:message code="item.photo.label" default="Photo" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'photo', 'errors')}">
-                                    <input type="file" id="photo" name="photo" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                   <label for="deadLine"><g:message code="item.deadLine.label" default="Dead Line" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'deadLine', 'errors')}">
@@ -78,12 +69,30 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="isSent"><g:message code="item.isSent.label" default="Is Sent" /></label>
+                                  <label for="user"><g:message code="item.user.label" default="User" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'isSent', 'errors')}">
-                                    <g:checkBox name="isSent" value="${itemInstance?.isSent}" />
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'user', 'errors')}">
+                                    <g:select name="user.id" from="${com.rentamelo.User.list()}" optionKey="id" value="${itemInstance?.user?.id}"  />
                                 </td>
-                            </tr>                       
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="category"><g:message code="item.category.label" default="Category" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
+                                    <g:select name="category.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['null': '']" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="picture"><g:message code="item.picture.label" default="Picture" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'picture', 'errors')}">
+                                    <input type="file" id="picture" name="picture" />
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>

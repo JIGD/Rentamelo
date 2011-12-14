@@ -22,9 +22,9 @@
                 <table>
                     <thead>
                         <tr>
-                        
+                        <sec:ifAnyGranted roles="ROLE_ADMIN">
                             <g:sortableColumn property="id" title="${message(code: 'item.id.label', default: 'Id')}" />
-                        
+                        </sec:ifAnyGranted>
                             <g:sortableColumn property="name" title="Nombre" />
                         
                             <g:sortableColumn property="summary" title="Resumen" />
@@ -42,9 +42,9 @@
                     <tbody>
                     <g:each in="${itemInstanceList}" status="i" var="itemInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
-                        
+                        <sec:ifAnyGranted roles="ROLE_ADMIN">
                             <td><g:link action="show" id="${itemInstance.id}">${fieldValue(bean: itemInstance, field: "id")}</g:link></td>
-                        
+                        </sec:ifAnyGranted>
                             <td>${fieldValue(bean: itemInstance, field: "name")}</td>
                         
                             <td>${fieldValue(bean: itemInstance, field: "summary")}</td>

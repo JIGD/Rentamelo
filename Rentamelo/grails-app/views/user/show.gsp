@@ -65,14 +65,30 @@
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="user.address2.label" default="Address2" /></td>
+                            <td valign="top" class="name"><g:message code="user.telefono.label" default="Telefono" /></td>
                             
-                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "address2")}</td>
+                            <td valign="top" class="value">${fieldValue(bean: userInstance, field: "telefono")}</td>
                             
                         </tr>
                     
                         <tr class="prop">
-                            <td valign="top" class="name"><g:message code="user.avatar.label" default="Avatar" /></td>
+                            <td valign="top" class="name"><g:message code="user.accountExpired.label" default="Account Expired" /></td>
+                            
+                            <td valign="top" class="value"><g:formatBoolean boolean="${userInstance?.accountExpired}" /></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="user.accountLocked.label" default="Account Locked" /></td>
+                            
+                            <td valign="top" class="value"><g:formatBoolean boolean="${userInstance?.accountLocked}" /></td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="user.enabled.label" default="Enabled" /></td>
+                            
+                            <td valign="top" class="value"><g:formatBoolean boolean="${userInstance?.enabled}" /></td>
                             
                         </tr>
                     
@@ -86,6 +102,13 @@
                                 </g:each>
                                 </ul>
                             </td>
+                            
+                        </tr>
+                    
+                        <tr class="prop">
+                            <td valign="top" class="name"><g:message code="user.passwordExpired.label" default="Password Expired" /></td>
+                            
+                            <td valign="top" class="value"><g:formatBoolean boolean="${userInstance?.passwordExpired}" /></td>
                             
                         </tr>
                     

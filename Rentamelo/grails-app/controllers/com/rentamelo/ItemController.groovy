@@ -55,13 +55,14 @@ class ItemController {
     }
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def show = {
+		def currentUserName = springSecurityService.currentUser.username
         def itemInstance = Item.get(params.id)
         if (!itemInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'item.label', default: 'Item'), params.id])}"
             redirect(action: "list")
         }
         else {
-            [itemInstance: itemInstance]
+            [itemInstance: itemInstance, userName: currentUserName]
         }
     }
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
@@ -131,6 +132,10 @@ class ItemController {
 	def currentUser(){
 		return User.get(springSecurityService.principal.id)
 	}
+	
+	def getCurrentUserName(){
+		springSecurityService.currentUser.username
+		}
 
 }
 

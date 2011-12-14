@@ -24,7 +24,7 @@
                 <g:renderErrors bean="${userInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form method="post"  enctype="multipart/form-data">
+            <g:form method="post" >
                 <g:hiddenField name="id" value="${userInstance?.id}" />
                 <g:hiddenField name="version" value="${userInstance?.version}" />
                 <div class="dialog">
@@ -45,7 +45,7 @@
                                   <label for="password"><g:message code="user.password.label" default="Password" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'password', 'errors')}">
-                                    <g:passwordField name="password" value="${userInstance?.password}" />
+                                    <g:textField name="password" value="${userInstance?.password}" />
                                 </td>
                             </tr>
                         
@@ -78,19 +78,37 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="address2"><g:message code="user.address2.label" default="Address2" /></label>
+                                  <label for="telefono"><g:message code="user.telefono.label" default="Telefono" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'address2', 'errors')}">
-                                    <g:textField name="address2" value="${userInstance?.address2}" />
+                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'telefono', 'errors')}">
+                                    <g:textField name="telefono" value="${userInstance?.telefono}" />
                                 </td>
                             </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="avatar"><g:message code="user.avatar.label" default="Avatar" /></label>
+                                  <label for="accountExpired"><g:message code="user.accountExpired.label" default="Account Expired" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'avatar', 'errors')}">
-                                    <input type="file" id="avatar" name="avatar" />
+                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'accountExpired', 'errors')}">
+                                    <g:checkBox name="accountExpired" value="${userInstance?.accountExpired}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="accountLocked"><g:message code="user.accountLocked.label" default="Account Locked" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'accountLocked', 'errors')}">
+                                    <g:checkBox name="accountLocked" value="${userInstance?.accountLocked}" />
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="enabled"><g:message code="user.enabled.label" default="Enabled" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'enabled', 'errors')}">
+                                    <g:checkBox name="enabled" value="${userInstance?.enabled}" />
                                 </td>
                             </tr>
                         
@@ -99,7 +117,23 @@
                                   <label for="items"><g:message code="user.items.label" default="Items" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'items', 'errors')}">
-                                    <g:select name="items" from="${com.rentamelo.Item.list()}" multiple="yes" optionKey="id" size="5" value="${userInstance?.items*.id}" />
+                                    
+<ul>
+<g:each in="${userInstance?.items?}" var="i">
+    <li><g:link controller="item" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
+</g:each>
+</ul>
+<g:link controller="item" action="create" params="['user.id': userInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'item.label', default: 'Item')])}</g:link>
+
+                                </td>
+                            </tr>
+                        
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                  <label for="passwordExpired"><g:message code="user.passwordExpired.label" default="Password Expired" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'passwordExpired', 'errors')}">
+                                    <g:checkBox name="passwordExpired" value="${userInstance?.passwordExpired}" />
                                 </td>
                             </tr>
                         

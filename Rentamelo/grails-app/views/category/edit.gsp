@@ -30,7 +30,7 @@
                 <div class="dialog">
                     <table>
                         <tbody>
-                        
+                        <sec:ifAnyGranted roles="ROLE_ADMIN">
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="parent"><g:message code="category.parent.label" default="Parent" /></label>
@@ -39,6 +39,8 @@
                                     <g:select name="parent.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${categoryInstance?.parent?.id}" noSelection="['null': '']" />
                                 </td>
                             </tr>
+                            
+                            </sec:ifAnyGranted>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
