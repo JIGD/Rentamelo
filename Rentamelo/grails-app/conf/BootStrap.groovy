@@ -40,6 +40,7 @@ class BootStrap {
 					SecUserSecRole.create user, role
 				}
 				
+				
 				user = User.findByUsername('jigd') ?: new User(
 					username: 'jigd',
 					password: '123456',

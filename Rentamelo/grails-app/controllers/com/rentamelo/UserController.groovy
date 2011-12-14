@@ -1,7 +1,7 @@
 package com.rentamelo
 import grails.plugins.springsecurity.Secured
 
-@Secured(['IS_AUTHENTICATED_REMEMBERED'])
+//@Secured(['IS_AUTHENTICATED_REMEMBERED'])
 class UserController {
 	
 	static scaffold = User
@@ -48,8 +48,12 @@ class UserController {
 
 	@Secured(['ROLE_ADMIN'])
     def save = {
+		def role = SecRole.findByAuthority('ROLE_USER') ?: new SecRole(authority: 'ROLE_USER').save(failOnError: true)
         def userInstance = new User(params)
         if (userInstance.save(flush: true)) {
+			if (!userInstance.authorities.contains(role)) {
+				SecUserSecRole.create userInstance, role
+			}
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
             redirect(action: "show", id: userInstance.id)
         }
@@ -117,4 +121,20 @@ class UserController {
             redirect(action: "list")
         }
     }
+	
+	def show = {
+		def currentUserName = getCurrentUserName()
+		def userInstance = User.get(params.id)
+		if (!userInstance) {
+			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'item.label', default: 'Item'), params.id])}"
+			redirect(action: "index")
+		}
+		else {
+			[userInstance: userInstance, userName: currentUserName]
+		}
+	}
+	
+	def getCurrentUserName(){
+		springSecurityService.currentUser.username
+		}
 }
