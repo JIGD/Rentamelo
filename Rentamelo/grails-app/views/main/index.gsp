@@ -82,15 +82,16 @@
                 </div>
                 <div class="panelBtm">
 <br/>
+<div class="categorias" >
 <h1>Categorias</h1>
-			            	<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
-			<g:render template="/category/CategoryCard" collection="${things[1]}" var="category"/>  
-			
+<link href="${resource(dir: 'css', file: 'app.css')}" type="text/css" rel="stylesheet">
+
+         <g:render template="/category/CategoryCard" collection="${things[1]}" var="category"/>  			
 
                 </div>
             </div>
         </div>
-        
+        </div>
         <div id="pageBody">
             <h1>Bienvenido a Rentamelo, el sitio de rentas en hermosillo!</h1>
             <p> <h2>Buscas algo por solo un momento o tienes algun objeto que no sueles usar? Este es tu lugar!</h2>

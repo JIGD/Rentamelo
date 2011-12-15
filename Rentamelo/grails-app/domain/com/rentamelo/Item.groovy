@@ -15,7 +15,7 @@ class Item{
 	Date dateCreated //fecha en que fue creado 
 	User user
 	Category category
-	byte[] picture = 0
+	byte[] picture
 	
 	//static fetchMode = [user:"eager"]
 	

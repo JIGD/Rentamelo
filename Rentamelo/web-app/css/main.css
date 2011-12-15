@@ -79,6 +79,19 @@ input:focus, select:focus, textarea:focus {
     padding: 7px 12px;
 }
 
+.categorias h1{
+
+   background-image: url(../images/categoriaA.png);
+
+    text-align:center;
+
+}
+
+.categorias h3{
+
+    background-image: url(../images/categoriaB.png);
+padding: 3px;
+}
 #pageBody{
 	background: #0BE;
 }
