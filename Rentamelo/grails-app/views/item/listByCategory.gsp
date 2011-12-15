@@ -45,7 +45,7 @@
                         <sec:ifAnyGranted roles="ROLE_ADMIN">
                             <td><g:link action="show" id="${itemInstance.id}">${fieldValue(bean: itemInstance, field: "id")}</g:link></td>
                         </sec:ifAnyGranted>
-                            <td>${fieldValue(bean: itemInstance, field: "name")}</td>
+                            <td><g:link action="show" controller="item" id="${itemInstance.id}"> ${fieldValue(bean: itemInstance, field: "name")}</g:link></td>
                         
                             <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
                         

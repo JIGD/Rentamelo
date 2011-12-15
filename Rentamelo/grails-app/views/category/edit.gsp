@@ -30,33 +30,6 @@
                 <div class="dialog">
                     <table>
                         <tbody>
-                        <sec:ifAnyGranted roles="ROLE_ADMIN">
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="parent"><g:message code="category.parent.label" default="Parent" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: categoryInstance, field: 'parent', 'errors')}">
-                                    <g:select name="parent.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${categoryInstance?.parent?.id}" noSelection="['null': '']" />
-                                </td>
-                            </tr>
-                            
-                            </sec:ifAnyGranted>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="children"><g:message code="category.children.label" default="Children" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: categoryInstance, field: 'children', 'errors')}">
-                                    
-<ul>
-<g:each in="${categoryInstance?.children?}" var="c">
-    <li><g:link controller="category" action="show" id="${c.id}">${c?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="category" action="create" params="['category.id': categoryInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'category.label', default: 'Category')])}</g:link>
-
-                                </td>
-                            </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
@@ -64,22 +37,6 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: categoryInstance, field: 'name', 'errors')}">
                                     <g:textField name="name" value="${categoryInstance?.name}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="items"><g:message code="category.items.label" default="Items" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: categoryInstance, field: 'items', 'errors')}">
-                                    
-<ul>
-<g:each in="${categoryInstance?.items?}" var="i">
-    <li><g:link controller="item" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></li>
-</g:each>
-</ul>
-<g:link controller="item" action="create" params="['category.id': categoryInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'item.label', default: 'Item')])}</g:link>
-
                                 </td>
                             </tr>
                         

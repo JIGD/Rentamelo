@@ -88,7 +88,7 @@
 
     <g:if test="${haveQuery && !haveResults && !parseException}">
       <p>Nada concuerda con tu busqueda - <strong>${params.q}</strong></p>
-      <g:if test="${!searchResult?.suggestedQuery}">
+      <%-- <g:if test="${!searchResult?.suggestedQuery}">
         <p>Suggestions:</p>
         <ul>
           <li>Try a suggested query: <g:link controller="search" action="index" params="[q: params.q, suggestQuery: true]">Search again with the <strong>suggestQuery</strong> option</g:link><br />
@@ -102,11 +102,11 @@
 
     <g:if test="${searchResult?.suggestedQuery}">
       <p>Quisiste decir <g:link controller="search" action="index" params="[q: searchResult.suggestedQuery]">${StringQueryUtils.highlightTermDiffs(params.q.trim(), searchResult.suggestedQuery)}</g:link>?</p>
-    </g:if>
+    </g:if>--%>
 
     <g:if test="${parseException}">
       <p>Tu busqueda - <strong>${params.q}</strong> - no es valida.</p>
-      <p>Suggestions:</p>
+<%--      <p>Suggestions:</p>
       <ul>
         <li>Fix the query: see <a href="http://lucene.apache.org/java/docs/queryparsersyntax.html">Lucene query syntax</a> for examples</li>
         <g:if test="${LuceneUtils.queryHasSpecialCharacters(params.q)}">
@@ -118,8 +118,8 @@
               <em>Or use the Searchable Plugin's <strong>escape</strong> option: <g:link controller="search" action="index" params="[q: params.q, escape: true]">Search again with the <strong>escape</strong> option enabled</g:link></em>
           </li>
         </g:if>
-      </ul>
-    </g:if>
+      </ul> 
+    </g:if>--%>
 
     <g:if test="${haveResults}">
       <div class="results">

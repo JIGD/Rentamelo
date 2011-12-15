@@ -30,15 +30,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="parent"><g:message code="category.parent.label" default="Parent" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: categoryInstance, field: 'parent', 'errors')}">
-                                    <g:select name="parent.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${categoryInstance?.parent?.id}" noSelection="['null': '']" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="name"><g:message code="category.name.label" default="Name" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: categoryInstance, field: 'name', 'errors')}">

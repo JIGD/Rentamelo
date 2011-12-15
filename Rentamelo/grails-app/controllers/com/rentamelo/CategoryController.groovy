@@ -1,5 +1,7 @@
-package com.rentamelo
+import com.rentamelo.*
+import grails.plugins.springsecurity.Secured
 
+@Secured(['ROLE_ADMIN'])
 class CategoryController {
 
 	def categoryService

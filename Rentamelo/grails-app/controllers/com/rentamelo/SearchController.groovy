@@ -3,7 +3,7 @@ import org.compass.core.engine.SearchEngineQueryParseException
 import grails.plugins.springsecurity.Secured
 
 @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
-class SearchController {
+class SearchableController {
     def searchableService
 
     /**
@@ -14,8 +14,7 @@ class SearchController {
             return [:]
         }
         try {
-			def result = Item.search(params.q);
-            return [searchResult: result ]
+            return [searchResult: searchableService.search(params.q, params)]
         } catch (SearchEngineQueryParseException ex) {
             return [parseException: true]
         }

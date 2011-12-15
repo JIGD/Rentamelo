@@ -3,10 +3,10 @@ import org.grails.taggable.*
 import org.grails.attachmentable.*
 
 class Item{	
-	static searchable ={
-		spellCheck "include"
-	}
-	static attachmentable = true
+static searchable = {
+  only = ['name']
+  //spellCheck 'include'
+}
 	
 	String name
 	String summary // vista pequeña
@@ -25,7 +25,7 @@ class Item{
 		deadLine nullable:true, min:new Date()
 		details blank:false, maxSize:3000
 		user nullable:false
-		category nullable:true
+		category nullable:false
 		picture nullable:true
     }
 	

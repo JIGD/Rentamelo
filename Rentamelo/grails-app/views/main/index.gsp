@@ -69,15 +69,20 @@
                     
       
      <sec:ifLoggedIn>
-     <li><g:link url="[action:'index',controller:'user']">Perfil</g:link> </li>
-     <li><g:link url = "item/create">Crear articulo</g:link></li>
-     <li><g:link controller = "logout">Salir</g:link></li>
+     <g:link url="[action:'index',controller:'user']">Perfil</g:link> <br/>
+     <g:link url = "item/create">Crear articulo</g:link><br/>
+     <sec:ifAnyGranted roles="ROLE_ADMIN">
+         <g:link url="[action:'create',controller:'category']">Crear una categoria</g:link> <br/>
+         <g:link url="[action:'list',controller:'user']">Ver lista de usuarios</g:link> <br/>
+     </sec:ifAnyGranted>
+ 
+     <g:link controller = "logout"> Salir</g:link>
      </sec:ifLoggedIn>
         
      <sec:ifNotLoggedIn>           
-     <li>Hola, invitado.</li> 
-     <li><g:link controller ="user" action = "create">Inscribirse</g:link></li>
-     <li><g:link url= "login/auth">Ingresar</g:link></li>     
+      Hola, invitado.<br/>
+     <g:link controller ="user" action = "create">Inscribirse</g:link><br/>
+     <g:link url= "login/auth">Ingresar</g:link><br/>     
      </sec:ifNotLoggedIn>           
                 </div>
                 <div class="panelBtm">

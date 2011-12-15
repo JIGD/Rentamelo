@@ -1,61 +1,40 @@
 
-<%@ page import="com.rentamelo.Item" %>
+<%@ page import="com.rentamelo.Category" %>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
+        <g:set var="entityName" value="${message(code: 'category.label', default: 'Category')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
     </head>
     <body>
         <div class="nav">
             <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
-            <span class="menuButton"><g:link class="create" controller="item" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
+            <span class="menuButton"><g:link class="create" action="create"><g:message code="default.new.label" args="[entityName]" /></g:link></span>
         </div>
         <div class="body">
             <h1><g:message code="default.list.label" args="[entityName]" /></h1>
             <g:if test="${flash.message}">
             <div class="message">${flash.message}</div>
             </g:if>
-            
             <div class="list">
                 <table>
                     <thead>
                         <tr>
                         
-                            <g:sortableColumn property="id" title="${message(code: 'item.id.label', default: 'Id')}" />
+                            <g:sortableColumn property="id" title="${message(code: 'category.id.label', default: 'Id')}" />
                         
-                            <g:sortableColumn property="name" title="Nombre" />
-                        
-                            <g:sortableColumn property="summary" title="Resumen" />
-                        
-                            <g:sortableColumn property="photo" title="Foto" /> 
-                           
-                            <g:sortableColumn property="dateCreated" title="Fecha de creacion" />
-                        
-                            <g:sortableColumn property="deadLine" title="Fecha en que acaba" />
-                        
-                            <g:sortableColumn property="details" title="Detalles" />
+                            <g:sortableColumn property="name" title="${message(code: 'category.name.label', default: 'Name')}" />
                         
                         </tr>
                     </thead>
                     <tbody>
-                    <g:each in="${itemInstanceList}" status="i" var="itemInstance">
+                    <g:each in="${categoryInstanceList}" status="i" var="categoryInstance">
                         <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
                         
-                            <td><g:link action="show" id="${itemInstance.id}">${fieldValue(bean: itemInstance, field: "id")}</g:link></td>
+                            <td><g:link action="show" id="${categoryInstance.id}">${fieldValue(bean: categoryInstance, field: "id")}</g:link></td>
                         
-                            <td>${fieldValue(bean: itemInstance, field: "name")}</td>
-                        
-                            <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
-                        
-                            <td><img src="${createLink(controller:'item', action:'image', id: itemInstance.id)}"/></td>
-                            
-                            <td><g:formatDate date="${itemInstance.dateCreated}" /></td>
-                        
-                            <td><g:formatDate date="${itemInstance.deadLine}" /></td>
-                        
-                            <td>${fieldValue(bean: itemInstance, field: "details")}</td>
+                            <td>${fieldValue(bean: categoryInstance, field: "name")}</td>
                         
                         </tr>
                     </g:each>
@@ -63,7 +42,7 @@
                 </table>
             </div>
             <div class="paginateButtons">
-                <g:paginate total="${itemInstanceTotal}" />
+                <g:paginate total="${categoryInstanceTotal}" />
             </div>
         </div>
     </body>
