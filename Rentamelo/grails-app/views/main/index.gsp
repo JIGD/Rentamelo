@@ -76,7 +76,7 @@
         
      <sec:ifNotLoggedIn>           
      <li>Hola, invitado.</li> 
-     <li><g:link controller = "signup">Inscribirse</g:link></li>
+     <li><g:link controller ="user" action = "create">Inscribirse</g:link></li>
      <li><g:link url= "login/auth">Ingresar</g:link></li>     
      </sec:ifNotLoggedIn>           
                 </div>

@@ -69,15 +69,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="user"><g:message code="item.user.label" default="User" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'user', 'errors')}">
-                                    <g:select name="user.id" from="${com.rentamelo.User.list()}" optionKey="id" value="${itemInstance?.user?.id}"  />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                   <label for="category"><g:message code="item.category.label" default="Category" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">

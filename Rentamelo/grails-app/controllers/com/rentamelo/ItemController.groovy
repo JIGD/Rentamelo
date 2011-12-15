@@ -39,12 +39,14 @@ class ItemController {
     def create = {
         def itemInstance = new Item()
         itemInstance.properties = params
-        return [itemInstance: itemInstance, categoryInstance: Category.list()]
+        return [itemInstance: itemInstance, categoryInstanceList: Category.list()]
     }
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def save = {
         def itemInstance = new Item(params)
         itemInstance.user = currentUser()
+		def category = Category.findByName(params.category.name)
+		itemInstance.category = category
 		if (itemInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])}"
             redirect(action: "show", id: itemInstance.id)
@@ -53,18 +55,20 @@ class ItemController {
             render(view: "create", model: [itemInstance: itemInstance])
         }
     }
-	@Secured(['ROLE_ADMIN','ROLE_USER'])
+
     def show = {
-		def currentUserName = springSecurityService.currentUser.username
+		def currentUser = getCurrentUser()
+		def currentUserName = verifyUser(currentUser)
         def itemInstance = Item.get(params.id)
         if (!itemInstance) {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'item.label', default: 'Item'), params.id])}"
             redirect(action: "list")
         }
         else {
-            [itemInstance: itemInstance, userName: currentUserName]
-        }
-    }
+           return [itemInstance: itemInstance, userName: currentUserName]
+		}
+	}
+		
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def edit = {
         def itemInstance = Item.get(params.id)
@@ -135,6 +139,19 @@ class ItemController {
 	
 	def getCurrentUserName(){
 		springSecurityService.currentUser.username
+		}
+	
+	def getCurrentUser(){
+		springSecurityService.currentUser
+		}
+	
+	def verifyUser(User loggedUser){
+		if(loggedUser==null){
+			return ""
+			}
+		else{
+			return loggedUser.name
+			}
 		}
 
 }

@@ -29,7 +29,7 @@
                         
                             <g:sortableColumn property="summary" title="Resumen" />
                         
-                            <g:sortableColumn property="photo" title="Foto" /> 
+
                            
                             <g:sortableColumn property="dateCreated" title="Fecha de creacion" />
                         
@@ -49,7 +49,6 @@
                         
                             <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
                         
-                            <td><img src="${createLink(controller:'item', action:'image', id: itemInstance.id)}"/></td>
                             
                             <td><g:formatDate date="${itemInstance.dateCreated}" /></td>
                         

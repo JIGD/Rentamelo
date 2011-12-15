@@ -79,7 +79,8 @@
                                     <label for="category"><g:message code="item.category.label" default="Categoria" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
-                                   <g:select name=”category” from=”${category?.values()}” value=”${categoryInstance?.name}”  />
+                               <g:select name="category.name" from="${categoryInstanceList}" value="category.name" optionKey="${it}" noSelection="['':'-Elije la categoria-']"    />
+                               
                                 </td>
                             </tr>
                         

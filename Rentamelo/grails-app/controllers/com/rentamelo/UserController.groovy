@@ -46,7 +46,6 @@ class UserController {
         return [userInstance: userInstance]
     }
 
-	@Secured(['ROLE_ADMIN'])
     def save = {
 		def role = SecRole.findByAuthority('ROLE_USER') ?: new SecRole(authority: 'ROLE_USER').save(failOnError: true)
         def userInstance = new User(params)
@@ -55,7 +54,7 @@ class UserController {
 				SecUserSecRole.create userInstance, role
 			}
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
-            redirect(action: "show", id: userInstance.id)
+            redirect(controller:"login",action:"index")
         }
         else {
             render(view: "create", model: [userInstance: userInstance])
@@ -123,7 +122,8 @@ class UserController {
     }
 	
 	def show = {
-		def currentUserName = getCurrentUserName()
+		def currentUser = getCurrentUser()
+		def currentUserName = verifyUser(currentUser)
 		def userInstance = User.get(params.id)
 		if (!userInstance) {
 			flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'item.label', default: 'Item'), params.id])}"
@@ -134,7 +134,16 @@ class UserController {
 		}
 	}
 	
-	def getCurrentUserName(){
-		springSecurityService.currentUser.username
+	def getCurrentUser(){
+		springSecurityService.currentUser
+		}
+	
+	def verifyUser(User loggedUser){
+		if(loggedUser==null){
+			return ""
+			}
+		else{
+			return loggedUser.name
+			}
 		}
 }
