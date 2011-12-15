@@ -143,7 +143,7 @@ class UserController {
 			return ""
 			}
 		else{
-			return loggedUser.name
+			return loggedUser.username
 			}
 		}
 }
