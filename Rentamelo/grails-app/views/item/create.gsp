@@ -58,15 +58,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="deadLine"><g:message code="item.deadLine.label" default="Fecha de vencimiento" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'deadLine', 'errors')}">
-                                    <g:datePicker name="deadLine" precision="day" value = "${new Date()}" default="none" noSelection="['':'']" years="${2010..2030}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="details"><g:message code="item.details.label" default="Detalles" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'details', 'errors')}">
@@ -79,8 +70,16 @@
                                     <label for="category"><g:message code="item.category.label" default="Categoria" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
-                               <g:select name="category.name" from="${categoryInstanceList}" value="category.name" optionKey="${it}" noSelection="['':'-Elije la categoria-']"    />
-                               
+                                    <g:select name="category.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['Elije la categoria': '']" />
+                                </td>
+                            </tr>
+                            
+                                                        <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="canBeSent"><g:message code="item.canBeSent.label" default="Puede ser enviado" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'canBeSent', 'errors')}">
+                               <g:checkBox name="canBeSent" value="${true}"/>
                                 </td>
                             </tr>
                         

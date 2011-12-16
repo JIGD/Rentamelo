@@ -8,7 +8,7 @@ class MainController {
     def index = {		
 		//params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		//[itemInstanceList: Item.list(params), itemInstanceTotal: Item.count()] 
-		def items = Item.list(sort:"deadLine",order:"asc",max:5)
+		def items = Item.list(sort:"dateCreated",order:"asc",max:5)
 		def categories = Category.list(sort:"name");
 		def things =[items, categories];
 		return [things:things]

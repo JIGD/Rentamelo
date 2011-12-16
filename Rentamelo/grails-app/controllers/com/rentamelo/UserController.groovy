@@ -14,7 +14,7 @@ class UserController {
 	
 	def items= {
 		
-		def items = Item.findAllByUser(sec:username,[sort:'deadLine',order:'asc'])
+		def items = Item.findAllByUser(sec:username,[sort:'dateCreated',order:'asc'])
 			
 	}
 

@@ -19,7 +19,7 @@ class ItemIntTests extends GroovyTestCase {
 	void testCRUD(){
 		def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
 			details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-			id:1231, photo:123, dateCreated: new Date(), deadLine: null, isSent:true )
+			id:1231, photo:123, dateCreated: new Date(), isSent:true )
 		item.save(failOnError:true)
 		def b = Item.get(1)
 		assert item.get(b.id) != null
@@ -29,7 +29,7 @@ class ItemIntTests extends GroovyTestCase {
 	void testName(){
 		def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
 			details:"Aqui detallo muy bien que ondas con lo que quiero rentar sin pasarme de los mil caracteres",
-			id:1231, photo:123, dateCreated: new Date(), deadLine: null, isSent:true )
+			id:1231, photo:123, dateCreated: new Date(), isSent:true )
 		item.save()
 		assert item.toString() == "algo"
 		}

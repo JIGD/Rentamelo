@@ -23,7 +23,6 @@
     		<g:if test = "${item.category!=null}"> 	
     		<h4>Categoria:<g:link action="listByCategory" controller="item" id="${item.category.id}"> ${ item.category.name} </g:link></h4></br>
     		</g:if>
- 			<div class = "deadLine">Vence: <g:formatDate format = "dd-MM-yyyy" date = "${item.deadLine}" /> </div>
  	</div>   
     </td>
   

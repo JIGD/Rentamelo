@@ -51,15 +51,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="deadLine"><g:message code="item.deadLine.label" default="Dead Line" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'deadLine', 'errors')}">
-                                    <g:datePicker name="deadLine" precision="day" value="${itemInstance?.deadLine}" default="none" noSelection="['': '']" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                   <label for="details"><g:message code="item.details.label" default="Details" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'details', 'errors')}">
@@ -72,7 +63,7 @@
                                   <label for="category"><g:message code="item.category.label" default="Category" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
-                                    <g:select name="category.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['null': '']" />
+                                    <g:select name="category.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['Elije la categoria': '']" />
                                 </td>
                             </tr>
                         
@@ -84,6 +75,15 @@
                                     <input type="file" id="picture" name="picture" />
                                 </td>
                             </tr>
+                            
+                             <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="canBeSent"><g:message code="item.canBeSent.label" default="Puede ser enviado" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'canBeSent', 'errors')}">
+                               <g:checkBox name="canBeSent" value="${itemInstance.canBeSent}"/>
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>
@@ -91,6 +91,7 @@
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" /></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
+               		<span class="button"></span>
                 </div>
             </g:form>
         </div>

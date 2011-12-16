@@ -33,8 +33,6 @@
                            
                             <g:sortableColumn property="dateCreated" title="Fecha de creacion" />
                         
-                            <g:sortableColumn property="deadLine" title="Fecha en que acaba" />
-                        
                             <g:sortableColumn property="details" title="Detalles" />
                         
                         </tr>
@@ -51,8 +49,6 @@
                         
                             
                             <td><g:formatDate date="${itemInstance.dateCreated}" /></td>
-                        
-                            <td><g:formatDate date="${itemInstance.deadLine}" /></td>
                         
                             <td>${fieldValue(bean: itemInstance, field: "details")}</td>
                         

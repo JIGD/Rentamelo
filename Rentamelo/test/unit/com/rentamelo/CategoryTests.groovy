@@ -31,7 +31,7 @@ class CategoryTests extends GrailsUnitTestCase {
 		assertTrue categoryF.validate()
 		def user1 = new User(fullName:"admon", email:"admon@algo.com", address1:"this")
 		def item = new Item(name:"algo", summary:"Este es un item que quiero rentar",
-			details:"detalles",	dateCreated: new Date(), deadLine: new Date(), isSent:true, user:user1)
+			details:"detalles",	dateCreated: new Date(), isSent:true, user:user1)
 		def itemss = [item]
 		categoryF = new Category(name:"Padre", children:sons, items:itemss)
 		assertFalse categoryF.validate()

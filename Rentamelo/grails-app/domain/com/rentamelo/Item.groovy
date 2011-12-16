@@ -7,26 +7,37 @@ static searchable = {
   only = ['name']
   //spellCheck 'include'
 }
-	
+	//remover deadLine
 	String name
 	String summary // vista pequeña
 	String details // detalles
-	Date deadLine //fecha en que acaba el anuncio (si es que acaba)
+	//Date deadLine //fecha en que acaba el anuncio (si es que acaba)
 	Date dateCreated //fecha en que fue creado 
 	User user
 	Category category
 	byte[] picture
+	boolean canBeSent = false
+	boolean isRented = false
+	Rent rent
+	int timesRented=0
+	float pricePerDay
+
+	
+	//agregar constraints
+	
 	
 	//static fetchMode = [user:"eager"]
 	
     static constraints = {
 		name blank:false
 		summary blank:false
-		deadLine nullable:true, min:new Date()
+		//deadLine nullable:true, min:new Date()
 		details blank:false, maxSize:3000
 		user nullable:false
 		category nullable:false
 		picture nullable:true
+		rent nullable:true
+		pricePerDay nullable:false
     }
 	
 	String toString(){
@@ -43,13 +54,4 @@ static searchable = {
 			}
 		}
 	
-	transient def beforeDelete = {
-		withNewSession{
-			removeAttachments()
-		}
-	}
-	
-	def onAddAttachment = {
-		hasPhoto=true
-		}
 }
