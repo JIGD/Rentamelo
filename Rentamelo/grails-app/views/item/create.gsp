@@ -82,6 +82,15 @@
                                <g:checkBox name="canBeSent" value="${true}"/>
                                 </td>
                             </tr>
+                            
+                                                        <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="summary"><g:message code="item.summary.label" default="Resumen" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'summary', 'errors')}">
+                                    <g:textField name="summary" value="${itemInstance?.summary}" />
+                                </td>
+                            </tr>
                         
                         </tbody>
                     </table>

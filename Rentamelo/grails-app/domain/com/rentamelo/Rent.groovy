@@ -32,13 +32,38 @@ class Rent {
 	
 	//Cuando el usuario regresa el item el dueño debe de verificarlo
 	void itemReturned(){
+		def rentedItem = Item.findByName(itemRented)
+		rentedItem.isRented = false
 		returned = true
 		}
-	
+	//esto se muestra en el show del que renta
 	def rentsByUser(String user){
-		Rent.findAllByRentedByUserAndReturned(user, false)
+		def rents= Rent.findAllByRentedByUserAndReturned(user, false)
+		[rentsUser:rents]
+		}
+	//esto en el show del dueño
+	def rentsByOwner(String owner){
+		def rents =Rent.findAllByRentedByUserAndReturned(owner, false)
+		[rentsOwner:rents]
+		}
+	//-----------------------------------------------------------------------
+	//Faltan cosas!!
+	//Funciones para reportes!! Recordar que se tienen que hacer listas de montones
+	def totalRentsByUser(String user){
+		def rentsByUser = Rent.findAllByRentedByUser(user)
+		[rentsByUser:rentsByUser]
 		}
 	
+	def totalRentsByCategory(String category){
+		def itemListByCategory = Item.findAllByCategory(category)
+		def listOfRents
+		def listOfRentsByCategory
+		itemListByCategory.each {
+		listOfRents = Rent.findAllByItemRented(it.name)
+		listOfRentsByCategory.add(itemRents:listOfRents)
+		}
+		[totalRentsByCategory:listOfRentsByCategory]
+		}
 	
 	
 	
