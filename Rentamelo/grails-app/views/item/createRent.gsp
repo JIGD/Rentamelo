@@ -17,7 +17,7 @@
   var days = document.getElementById('numberOfDays');
   var price = document.getElementById('pricePerDay');
   var cost = days*price;
-  var msg = "El costo total de esta renta es de $('cost')"
+  var msg = "El costo total de esta renta es de "+'cost'
 	document.writeln(msg)
   </g:javascript>
                   <div class="buttons">
