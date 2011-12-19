@@ -9,7 +9,6 @@ static searchable = {
 }
 	//remover deadLine
 	String name
-	String summary // vista pequeña
 	String details // detalles
 	//Date deadLine //fecha en que acaba el anuncio (si es que acaba)
 	Date dateCreated //fecha en que fue creado 
@@ -30,7 +29,6 @@ static searchable = {
 	
     static constraints = {
 		name blank:false
-		summary blank:false
 		//deadLine nullable:true, min:new Date()
 		details blank:false, maxSize:3000
 		user nullable:false
@@ -44,9 +42,22 @@ static searchable = {
 		return name
 		}
 	
- def getByCategory(String categoryName){
-		Item.findAllByCategory(categoryName)
+ def public static getByCategory(String categoryName){
+		//Item.findAllWhere(isRented:false, category=categoryName)
+	 
+	 def itemList = Item.getItems()
+		def categoryItemList = []
+		itemList.each{
+			if(it.category.name==categoryName){
+				categoryItemList.add(it)
+				}
+			}
+		categoryItemList
 		}
+ 
+ def public static getItems(){
+	 Item.findAllByIsRented(false)
+	 }
 	
 	String getByCategoryName(String categoryName){
 		if(this.category.name == categoryName){

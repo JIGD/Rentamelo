@@ -64,6 +64,15 @@
                                     <g:textArea name="details" cols="40" rows="5" value="${itemInstance?.details}" />
                                 </td>
                             </tr>
+                            
+                            <tr class="prop">
+                                <td valign="top" class="name">
+                                    <label for="pricePerDay"><g:message code="item.pricePerDay.label" default="Precio por dia" /></label>
+                                </td>
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'pricePerDay', 'errors')}">
+                                    <g:textArea name="pricePerDay" cols="10" rows="1" value="${itemInstance?.pricePerDay}" />
+                                </td>
+                            </tr>
                         
                             <tr class="prop">
                                 <td valign="top" class="name">

@@ -1,1 +1,1 @@
-<g:link action="listByCategory" controller="item" id="${category.id}"><h3>${category.name}</h3></g:link>
+<g:link action="listByCategory" controller="item" params="[categoryName:category.name]"><h3>${category.name}</h3></g:link>

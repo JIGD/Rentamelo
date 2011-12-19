@@ -8,7 +8,7 @@ import grails.plugins.springsecurity.SecurityConfigType
 class ItemController {
 	
 	def springSecurityService
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST", saveRent:"POST"]
 	
 	@Secured(['ROLE_ADMIN'])
     def index = {
@@ -16,16 +16,8 @@ class ItemController {
     }
 	
 	def listByCategory = {
-	int categoryId = Integer.valueOf(params.id)
-	int categoryOnItemId = 0
-		def itemList = Item.list()
-		def categoryItems = []
-		itemList.each{
-			categoryOnItemId = it.category.id
-			if (categoryOnItemId==categoryId ){
-			categoryItems.add(it)
-			}
-	}
+		String categoryName = params.categoryName
+		def categoryItems = Item.getByCategory(categoryName)
 		[itemInstanceList: categoryItems, itemInstanceTotal: categoryItems.count()]
 	}
 
@@ -132,6 +124,81 @@ class ItemController {
       byte[] image = item.picture 
       response.outputStream << image
     }
+	
+//-------------------------------	
+	//-------------------------------
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
+	def createRent = {
+		def rentInstance = new Rent()
+		rentInstance.properties = params
+		def itemInstance = Item.findByName(params.itemName)
+		return [rentInstance: rentInstance, itemInstance:itemInstance]
+	}
+	
+	
+	def saveRent={
+		def rent = new Rent(params)
+		def itemInstance = params.itemInstance
+		//if(itemInstance.isRented==false){ verificar que si alguien más rentó
+		def dataToShow = rent.initializeRent(itemName, user.username, numberOfDays)
+		def totalCost = rent.totalCost
+		def address = dataToShow.address
+		rent.save()
+		if (itemInstance.canBeSent==true){
+			//aqui va el método para avisar al usuario por medio de correo
+			//
+			//
+			//
+			//
+			flash.message = "El articulo sera enviado a su casa en brevedad, recuerde que debe pagar ${costoTotal} pesos"
+			return redirect(action:"index", controller:"user")
+			}
+		else{
+					flash.message = "Puede pasar por su articulo a la direccion: ${address} y recuerde que tiene que pagar ${totalCost} pesos"
+					return redirect(action:"index", controller:"user")
+								}
+		/*}
+		else{
+			def oldRent = Rent.findWhere(itemRented:itemName,returned:false)
+			flash.message = "Lo sentimos, alguien mas ha rentado el articulo mientras tu decidias pero no te preocupes por que estara disponible el ${oldRent.dateToReturn}"
+			redirect(action:"index", controller:"user")
+			}*/
+				}
+	
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
+	def itemReturned ={
+		def itemName = params.itemName
+		def itemInstance = Item.findByName(itemName)
+		def currentUser = currentUser()
+		if ((currentUser.username.equals(itemInstance.user.username))||currentUser.authorities.equals("ROLE_ADMIN")){
+		def rent = Rent.findWhere(itemRented:itemName,returned:false)
+		rent.itemReturned()
+		flash.message = "El item está listo para volver a rentarse"
+		return redirect(action:"index", controller:"user")
+		}
+		else{
+			flash.message = "Acceso invalido"
+			return redirect(action:"index", controller:"user")
+			}
+		}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	def currentUser(){
 		return User.get(springSecurityService.principal.id)
