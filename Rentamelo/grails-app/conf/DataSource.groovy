@@ -25,8 +25,11 @@ environments {
     }
     production {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+			dbCreate = "update"
+			driverClassName = "com.mysql.jdbc.Driver"
+			username = "nacho1"
+	password = "Welcome2.."
+	url = "jdbc:mysql://nacho1.db.4154896.hostedresource.com"
         }
     }
 }

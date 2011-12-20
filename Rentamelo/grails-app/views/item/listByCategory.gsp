@@ -27,7 +27,7 @@
                         </sec:ifAnyGranted>
                             <g:sortableColumn property="name" title="Nombre" />
                         
-                            <g:sortableColumn property="summary" title="Resumen" />
+                            <g:sortableColumn property="pricePerDay" title="Precio dia" />
                         
                             <g:sortableColumn property="photo" title="Foto" /> 
                            
@@ -45,7 +45,7 @@
                         </sec:ifAnyGranted>
                             <td><g:link action="show" controller="item" id="${itemInstance.id}"> ${fieldValue(bean: itemInstance, field: "name")}</g:link></td>
                         
-                            <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
+                            <td>${fieldValue(bean: itemInstance, field: "pricePerDay")}</td>
                         
                             <td><img src="${createLink(controller:'item', action:'image', id: itemInstance.id)}"/></td>
                             
