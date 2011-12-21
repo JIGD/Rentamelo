@@ -11,9 +11,10 @@
               <g:form action="saveRent"  enctype="multipart/form-data">
   <h1>Estas intentando rentar: ${itemInstance.name}</h1></br>
   <h1>Este articulo tiene un costo de: ${itemInstance.pricePerDay} pesos por dia</h1>
-  <g:select name="${daysRented}" from="${1..30}" value="${rentInstance.daysRented}" optionKey="daysRented" id="numberOfDays" onchange="checkEmail()"/>
-  <g:hiddenField name="name" value="${itemInstance.name} " />
-   <g:hiddenField name="daysRented" value="${rentInstance.daysRented}" />
+ <g:select name="numberOfDays" from="${1..30}" value="${fieldValue(bean: rentInstance, field: 'daysRented')}" id="numberOfDays"/>
+                               
+ 
+   <g:hiddenField name="name" value="${itemInstance.name} " />
   <g:javascript>
   function algo()
   {

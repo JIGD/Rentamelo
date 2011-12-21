@@ -140,7 +140,7 @@ class ItemController {
 		def rent = new Rent(params)
 		def user = getCurrentUser()
 		def itemName = params.name
-		def numberOfDays = params.daysRented
+		def numberOfDays = params.numberOfDays
 		System.out.println("+++++++++++++"+numberOfDays+"+++++++++++"+params.daysRented)
 		//if(itemInstance.isRented==false){ verificar que si alguien más rentó
 		def dataToShow = rent.initializeRent(itemName, user.username, numberOfDays)
