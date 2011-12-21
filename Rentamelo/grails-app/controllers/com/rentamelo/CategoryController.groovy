@@ -1,3 +1,4 @@
+package com.rentamelo
 import com.rentamelo.*
 import grails.plugins.springsecurity.Secured
 

@@ -1,9 +1,10 @@
 package com.rentamelo
+
 import org.compass.core.engine.SearchEngineQueryParseException
 import grails.plugins.springsecurity.Secured
 
 @Secured(['IS_AUTHENTICATED_ANONYMOUSLY'])
-class SearchableController {
+class SearchController {
     def searchableService
 
     /**
