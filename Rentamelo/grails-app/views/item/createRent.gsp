@@ -13,8 +13,8 @@
   <h1>Este articulo tiene un costo de: ${itemInstance.pricePerDay} pesos por dia</h1>
  <g:select name="numberOfDays" from="${1..30}" value="${fieldValue(bean: rentInstance, field: 'daysRented')}" id="numberOfDays"/>
                                
- 
-   <g:hiddenField name="name" value="${itemInstance.name} " />
+   <g:hiddenField name="name" value="${itemInstance.name}" />
+   <g:hiddenField name="itemInstance" value="${itemInstance}" />
   <g:javascript>
   function algo()
   {

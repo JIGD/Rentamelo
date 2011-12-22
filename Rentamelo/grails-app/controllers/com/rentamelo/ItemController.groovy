@@ -8,7 +8,7 @@ import grails.plugins.springsecurity.SecurityConfigType
 class ItemController {
 	
 	def springSecurityService
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST", saveRent:"POST"]
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	@Secured(['ROLE_ADMIN'])
     def index = {
@@ -139,13 +139,12 @@ class ItemController {
 	def saveRent={
 		def rent = new Rent(params)
 		def user = getCurrentUser()
-		def itemName = params.name
-		def numberOfDays = params.numberOfDays
-		System.out.println("+++++++++++++"+numberOfDays+"+++++++++++"+params.daysRented)
+		def itemInstance = Item.findByName(params.name)
+		int numberOfDays = Integer.valueOf(params.numberOfDays)
 		//if(itemInstance.isRented==false){ verificar que si alguien más rentó
-		def dataToShow = rent.initializeRent(itemName, user.username, numberOfDays)
+		rent.initializeRent(itemInstance.name, user.username, numberOfDays)
 		def totalCost = rent.totalCost
-		def address = dataToShow.address
+		def address = itemInstance.user.address1
 		rent.save()
 		if (itemInstance.canBeSent==true){
 			//aqui va el método para avisar al usuario por medio de correo

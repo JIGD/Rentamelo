@@ -17,7 +17,6 @@ static searchable = {
 	byte[] picture
 	boolean canBeSent = false
 	boolean isRented = false
-	Rent rent
 	int timesRented=0
 	float pricePerDay
 
@@ -34,7 +33,6 @@ static searchable = {
 		user nullable:false
 		category nullable:false
 		picture nullable:true
-		rent nullable:true
 		pricePerDay nullable:false
     }
 	

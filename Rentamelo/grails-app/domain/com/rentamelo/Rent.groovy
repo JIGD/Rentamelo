@@ -25,7 +25,9 @@ class Rent {
 		this.rentedByUser = rentedByUser
 		dateRented = new Date()
 		dateToReturn = dateRented.plus(daysRented)
+		System.out.println(itemRented)
 		def itemInstance = Item.findByName(itemRented)
+		System.out.println(itemInstance.name)
 		itemInstance.isRented = true
 		totalCost =itemInstance.pricePerDay*daysRented
 		itemInstance.timesRented++
