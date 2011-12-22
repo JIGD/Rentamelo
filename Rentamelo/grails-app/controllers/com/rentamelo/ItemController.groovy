@@ -129,10 +129,16 @@ class ItemController {
 	//-------------------------------
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
 	def createRent = {
+		def itemInstance = Item.findByName(params.itemName)
+		if (getCurrentUser()!=itemInstance.user){
 		def rentInstance = new Rent()
 		rentInstance.properties = params
-		def itemInstance = Item.findByName(params.itemName)
 		return [rentInstance: rentInstance, itemInstance:itemInstance]
+		}
+		else {
+			flash.message = "No puedes rentar tus propios articulos"
+			return redirect(action:"index", controller:"user")
+			}
 	}
 	
 	
