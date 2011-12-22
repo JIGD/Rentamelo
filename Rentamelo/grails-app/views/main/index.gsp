@@ -75,6 +75,7 @@
          <g:link url="[action:'create',controller:'category']">Crear una categoria</g:link> <br/>
          <g:link url="[action:'list',controller:'user']">Ver lista de usuarios</g:link> <br/>
      </sec:ifAnyGranted>
+          <g:link url="[action:'myRents',controller:'user']">Mis Rentas</g:link> <br/>
  
      <g:link controller = "logout"> Salir</g:link>
      </sec:ifLoggedIn>

@@ -32,6 +32,14 @@ class UserController {
 	def currentUser(){
 		return User.get(springSecurityService.principal.id)
 	   }
+	
+	@Secured(['ROLE_ADMIN','ROLE_USER'])
+	def myRents = {
+		def userInstance = currentUser()
+		def rent =Rent.rentsByUser(userInstance.username)
+		def rentO=Rent.rentsByOwner(userInstance.username)
+		[rent:rent, rentO:rentO]
+		}
 
 
 @Secured(['ROLE_ADMIN'])

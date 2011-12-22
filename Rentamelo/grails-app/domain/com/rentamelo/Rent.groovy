@@ -25,9 +25,7 @@ class Rent {
 		this.rentedByUser = rentedByUser
 		dateRented = new Date()
 		dateToReturn = dateRented.plus(daysRented)
-		System.out.println(itemRented)
 		def itemInstance = Item.findByName(itemRented)
-		System.out.println(itemInstance.name)
 		itemInstance.isRented = true
 		totalCost =itemInstance.pricePerDay*daysRented
 		itemInstance.timesRented++
@@ -41,24 +39,24 @@ class Rent {
 		returned = true
 		}
 	//esto se muestra en el show del que renta
-	def rentsByUser(String user){
+	static def rentsByUser(String user){
 		def rents= Rent.findAllByRentedByUserAndReturned(user, false)
 		[rentsUser:rents]
 		}
 	//esto en el show del dueño
-	def rentsByOwner(String owner){
+	static def rentsByOwner(String owner){
 		def rents =Rent.findAllByRentedByUserAndReturned(owner, false)
 		[rentsOwner:rents]
 		}
 	//-----------------------------------------------------------------------
 	//Faltan cosas!!
 	//Funciones para reportes!! Recordar que se tienen que hacer listas de montones
-	def totalRentsByUser(String user){
+	static def totalRentsByUser(String user){
 		def rentsByUser = Rent.findAllByRentedByUser(user)
 		[rentsByUser:rentsByUser]
 		}
 	
-	def totalRentsByCategory(String category){
+	static def totalRentsByCategory(String category){
 		def itemListByCategory = Item.findAllByCategory(category)
 		def listOfRents
 		def listOfRentsByCategory
