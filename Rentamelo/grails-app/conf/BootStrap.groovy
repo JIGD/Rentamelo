@@ -46,8 +46,8 @@ class BootStrap {
 					password: '123456',
 					enabled: true,
 					fullName: 'jijijiji',
-					email: 'maillllll@mailservice.com',
-					address1: 'Calle Falsa 123'
+					email: 'maillllll@mail.com',
+					address1: 'esta es una calle # 154'
 					).save(failOnError: true)
 					
 			if (!user.authorities.contains(role)) {
@@ -62,7 +62,7 @@ class BootStrap {
 				def item = new Item(name:"Plancha", summary:"Plancha nuevesita",
 					details:"Esta plancha esta curada, te la dejo barata",
 					category:Category.findByName("Electrodomesticos"), pricePerDay:10,
-					dateCreated: new Date(), isSent:true, user:User.findByUsername('admin')).save(failOnError: true)
+					dateCreated: new Date(), isSent:false, user:User.findByUsername('admin')).save(failOnError: true)
 
 					item = new Item(name:"Casa en la joya", summary:"Ven y conoce la finura",
 						details:"Casa en la joya a solo 10000000 pesos el dia",

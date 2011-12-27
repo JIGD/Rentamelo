@@ -37,8 +37,10 @@ class UserController {
 	def myRents = {
 		def userInstance = currentUser()
 		def rent =Rent.rentsByUser(userInstance.username)
-		def rentO=Rent.rentsByOwner(userInstance.username)
-		[rent:rent, rentO:rentO]
+		//def rent = Rent.findAllWhere(rentedByUser:userInstance.username, returned:false)
+		//def rentO=Rent.rentsByOwner(userInstance.username)
+		System.out.println(rent.inspect()+ "++++++++++++++++++++++++++++++++++++++++++++++++++++")
+		[rent:rent]//, rentO:rentO]
 		}
 
 

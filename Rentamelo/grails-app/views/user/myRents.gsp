@@ -6,9 +6,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+        </div>
   <div class="body">
-              	<g:render template="/item/_rentOwner" collection="${rentO}" var="rentO"/>     
-  				<g:render template="/item/_rentUser" collection="${rent}" var="rent"/> 
+             <%--  	<g:render template="/item/rentOwner" collection="${rentO}" var="rentO"/>     --%>
+  				<g:render template="/item/rentUser" collection="${rent}" var="rentU"/> 
   </div>
 </body>
 </html>

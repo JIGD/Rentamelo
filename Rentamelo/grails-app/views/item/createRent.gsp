@@ -6,7 +6,11 @@
 <meta name="layout" content="main"/>
 <title>Rentar objeto</title>
 </head>
+
 <body>
+        <div class="nav">
+            <span class="menuButton"><a class="home" href="${createLink(uri: '/')}"><g:message code="default.home.label"/></a></span>
+        </div>
   <div class="body">
               <g:form action="saveRent"  enctype="multipart/form-data">
   <h1>Estas intentando rentar: ${itemInstance.name}</h1></br>

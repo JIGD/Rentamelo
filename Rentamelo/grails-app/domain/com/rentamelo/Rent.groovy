@@ -5,6 +5,7 @@ import java.util.Date;
 class Rent {
 
 	String itemRented
+	String itemOwner
 	String rentedByUser //Utilizar el nombre de usuario para esto
 	Date dateToReturn //Fecha en que hay que regresarlo, quizá no usarlo hasta que ya se haga el checkout
 	Date dateRented
@@ -26,6 +27,7 @@ class Rent {
 		dateRented = new Date()
 		dateToReturn = dateRented.plus(daysRented)
 		def itemInstance = Item.findByName(itemRented)
+		itemOwner = itemInstance.user.username
 		itemInstance.isRented = true
 		totalCost =itemInstance.pricePerDay*daysRented
 		itemInstance.timesRented++
@@ -40,12 +42,12 @@ class Rent {
 		}
 	//esto se muestra en el show del que renta
 	static def rentsByUser(String user){
-		def rents= Rent.findAllByRentedByUserAndReturned(user, false)
-		[rentsUser:rents]
+		def rents =Rent.findAllWhere(rentedByUser:user, returned:false)
+		return rents
 		}
 	//esto en el show del dueño
 	static def rentsByOwner(String owner){
-		def rents =Rent.findAllByRentedByUserAndReturned(owner, false)
+		def rents =Rent.findAllWhere(itemOwner:owner, returned:false)
 		[rentsOwner:rents]
 		}
 	//-----------------------------------------------------------------------
