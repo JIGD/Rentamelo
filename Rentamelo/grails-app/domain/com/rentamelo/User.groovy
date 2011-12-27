@@ -12,10 +12,10 @@ class User extends SecUser{
     static constraints = {
     	//username blank:false, unique:true
 		//password blank:false, password:true
-		fullName blank:false
-		email nullable:false, unique:true
-		address1 blank:false
-		telefono blank:true, nullable:true
+		fullName blank:false, maxSize:50
+		email email:true, blank:false, unique:true
+		address1 blank:false,maxSize:100
+		telefono blank:true, nullable:true, maxSize:30
 	}
 	
 	String toString(){

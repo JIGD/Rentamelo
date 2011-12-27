@@ -46,7 +46,7 @@ class BootStrap {
 					password: '123456',
 					enabled: true,
 					fullName: 'jijijiji',
-					email: 'maillllll@mail.com',
+					email: 'igonzalez@nearsoft.com',
 					address1: 'esta es una calle # 154'
 					).save(failOnError: true)
 					

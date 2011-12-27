@@ -47,8 +47,8 @@ class Rent {
 		}
 	//esto en el show del dueño
 	static def rentsByOwner(String owner){
-		def rents =Rent.findAllWhere(itemOwner:owner, returned:false)
-		[rentsOwner:rents]
+		def rentOwn =Rent.findAllWhere(itemOwner:owner, returned:false)
+		return rentOwn
 		}
 	//-----------------------------------------------------------------------
 	//Faltan cosas!!
