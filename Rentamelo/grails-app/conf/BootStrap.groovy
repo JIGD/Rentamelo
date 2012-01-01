@@ -76,7 +76,7 @@ class BootStrap {
 					
 							item = new Item(name:"El bochomovil", summary:"Un bochito muy particular ",
 							details:"Lucete con lo inlucible rentando este bochomovil!", pricePerDay:100,
-							dateCreated: new Date(), isSent:true, user:User.findByUsername('admin'), category:Category.findByName('Carros') ).save(failOnError: true)
+							dateCreated: new Date(), isSent:true, user:User.findByUsername('jigd'), category:Category.findByName('Carros') ).save(failOnError: true)
 							
 													
 							

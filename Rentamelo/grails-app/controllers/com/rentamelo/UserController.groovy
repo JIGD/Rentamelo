@@ -38,7 +38,6 @@ class UserController {
 		def userInstance = currentUser()
 		def rent =Rent.rentsByUser(userInstance.username)
 		def rentO=Rent.rentsByOwner(userInstance.username)
-		System.out.println(rentO.inspect()+ "++++++++++++++++++++++++++++++++++++++++++++++++++++")
 		[rent:rent, rentO:rentO]
 		}
 
