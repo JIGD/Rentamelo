@@ -173,22 +173,7 @@ class ItemController {
 			}*/
 				}
 	
-	@Secured(['ROLE_ADMIN','ROLE_USER'])
-	def itemReturned ={
-		def itemName = params.itemName
-		def itemInstance = Item.findByName(itemName)
-		def currentUser = currentUser()
-		if ((currentUser.username.equals(itemInstance.user.username))||currentUser.authorities.equals("ROLE_ADMIN")){
-		def rent = Rent.findWhere(itemRented:itemName,returned:false)
-		rent.itemReturned()
-		flash.message = "El item está listo para volver a rentarse"
-		return redirect(action:"index", controller:"user")
-		}
-		else{
-			flash.message = "Acceso invalido"
-			return redirect(action:"index", controller:"user")
-			}
-		}
+
 	
 	
 	

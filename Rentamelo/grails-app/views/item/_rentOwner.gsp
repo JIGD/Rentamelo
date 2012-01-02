@@ -5,3 +5,9 @@
 <h3>Fue rentado por "${rentOwn.rentedByUser }</h3>
 <h3>El costo fue de "${rentOwn.totalCost}"</h3> <br/>
 </div>
+<g:form>
+<g:hiddenField name="itemName" value="${rentOwn.itemRented}" />
+                  <div class="buttons">
+                    <span class="button"><g:actionSubmit value="Articulo regresado" action="itemReturned" onclick="return confirm('Estas seguro?');" /></span>
+                </div>
+                </g:form>
