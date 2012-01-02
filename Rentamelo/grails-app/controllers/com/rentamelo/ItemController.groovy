@@ -152,6 +152,16 @@ class ItemController {
 		def totalCost = rent.totalCost
 		def address = itemInstance.user.address1
 		rent.save()
+		sendMail {
+			to "${itemInstance.user.email}"
+			subject 'Te han rentado un articulo'
+			from "rentameloapp@gmail.com"
+			body 'Felicidades! '+rent.rentedByUser+' ha rentado '+rent.itemRented+' por '+rent.daysRented+' dias y debe de pagarte un total de $'+totalCost+' pesos'
+		 }
+		
+
+		System.out.println(rent.inspect())
+		System.out.println(itemInstance.canBeSent)
 		if (itemInstance.canBeSent==true){
 			//aqui va el método para avisar al usuario por medio de correo
 			//

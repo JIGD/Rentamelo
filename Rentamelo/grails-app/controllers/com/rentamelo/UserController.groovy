@@ -7,6 +7,7 @@ class UserController {
 	static scaffold = User
 	
 	def springSecurityService
+	def mailService
 	
 	def login = {}
 	
@@ -151,7 +152,7 @@ class UserController {
 		if ((currentUser.username.equals(itemInstance.user.username))||currentUser.authorities.equals("ROLE_ADMIN")){
 		def rent = Rent.findWhere(itemRented:itemName,returned:false)
 		rent.itemReturned()
-		flash.message = "El item está listo para volver a rentarse"
+		flash.message = "El item esta listo para volver a rentarse"
 		return redirect(action:"index", controller:"user")
 		}
 		else{

@@ -15,15 +15,15 @@
               <g:form action="saveRent"  enctype="multipart/form-data">
   <h1>Estas intentando rentar: ${itemInstance.name}</h1></br>
   <h1>Este articulo tiene un costo de: ${itemInstance.pricePerDay} pesos por dia</h1>
- <g:select name="numberOfDays" from="${1..30}" value="${fieldValue(bean: rentInstance, field: 'daysRented')}" id="numberOfDays"/>
+ <g:select name="numberOfDays" from="${1..30}" value="${fieldValue(bean: rentInstance, field: 'daysRented')}" id="numberOfDays" onChange=algo() />
                                
    <g:hiddenField name="name" value="${itemInstance.name}" />
    <g:hiddenField name="itemInstance" value="${itemInstance}" />
   <g:javascript>
   function algo()
   {
-  var days = document.getElementById('numberOfDays');
-  var price = document.getElementById('pricePerDay');
+  var days =  $('#numberOfDays').val()
+  var price =  $('#numberOfDays').val()
   var cost = days*price;
   var msg = "El costo total de esta renta es de "+days+"   "+price
 	document.writeln(msg)

@@ -56,7 +56,7 @@ grails.exceptionresolver.params.exclude = ['password']
 // set per-environment serverURL stem for creating absolute links
 environments {
     production {
-        grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "www.rentamlodos-app.cloudfoundry.com"
     }
     development {
         grails.serverURL = "http://localhost:8080/${appName}"
@@ -108,10 +108,16 @@ grails.plugins.springsecurity.interceptUrlMap = [
 
 // Attachmentable plugin configs
 
-grails.attachmentable.maxInMemorySize = 1024
-grails.attachmentable.maxUploadSize = 1024000000
-grails.attachmentable.uploadDir = "c:/users/igonzalez/Rentamelo"
-grails.attachmentable.poster.evaluator = { getPrincipal()}
-grails.attachmentable.searchableFileConverter="attachmentFileConverter"
+grails{mail {
+	host = "smtp.gmail.com"
+	port = 465
+	username = "rentameloapp@gmail.com"
+	password = "rentamesta123"
+	props = ["mail.smtp.auth":"true",
+			 "mail.smtp.socketFactory.port":"465",
+			 "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+			 "mail.smtp.socketFactory.fallback":"false"]
 
+}
+}
 

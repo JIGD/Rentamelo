@@ -17,7 +17,7 @@ class BootStrap {
 							//password: springSecurityService.encodePassword('admin'),
 							enabled: true,
 							fullName: 'Cosme Fulanito',
-							email: 'mail@mailservice.com',
+							email: 'igonzalez@nearsoft.com',
 							address1: 'Calle Falsa 123'
 							).save(failOnError: true) 
 							
@@ -32,7 +32,7 @@ class BootStrap {
 						password: 'password',
 						enabled: true,
 						fullName: 'Cosme Fulanito',
-						email: 'mail2@mailservice.com',
+						email: 'korn@hotmail.com',
 						address1: 'Calle Falsa 123'
 						).save(failOnError: true)
 						
@@ -46,7 +46,7 @@ class BootStrap {
 					password: '123456',
 					enabled: true,
 					fullName: 'jijijiji',
-					email: 'igonzalez@nearsoft.com',
+					email: 'korn114@hotmail.com',
 					address1: 'esta es una calle # 154'
 					).save(failOnError: true)
 					

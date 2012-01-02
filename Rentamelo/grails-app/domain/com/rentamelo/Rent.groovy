@@ -31,6 +31,7 @@ class Rent {
 		itemInstance.isRented = true
 		totalCost =itemInstance.pricePerDay*daysRented
 		itemInstance.timesRented++
+		this.daysRented=daysRented
 		}
 	
 	
