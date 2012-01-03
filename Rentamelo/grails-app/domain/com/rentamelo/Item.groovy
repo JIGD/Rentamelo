@@ -28,11 +28,9 @@ static searchable = {
 	
     static constraints = {
 		name blank:false
-		//deadLine nullable:true, min:new Date()
 		details blank:false, maxSize:3000
-		user nullable:false
 		category nullable:false
-		picture nullable:true, maxSize: 106384
+		picture nullable:true, maxSize:106384
 		pricePerDay nullable:false, scale:2, range:1..100000d
     }
 	

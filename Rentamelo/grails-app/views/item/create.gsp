@@ -5,11 +5,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
-          <script src="http://code.jquery.com/jquery-latest.js"></script>
-  <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
         <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
         <title>Publicar nuevo articulo</title>
-     
+     <jv:generateValidation domain="item" display="list" container="valErrors" form="itemForm" ignore="['user','timesRented', 'category', 'isRented']"/>
     </head>
     <body>
         <div class="nav">
@@ -22,12 +20,15 @@
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${itemInstance}">
-            <div class="errors">
+            <div id="errors" class="errors" style="display:block;">
                 <g:renderErrors bean="${itemInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save"  enctype="multipart/form-data">
-                <div class="dialog">
+            <g:form id="itemForm" name="itemForm" onsubmit="return validateForm(this);" action="save"  enctype="multipart/form-data">
+                               <div id="valErrors" class="errors">
+                               </div>
+                               
+                               <div class="dialog">
                     <table>
                         <tbody>
                         
