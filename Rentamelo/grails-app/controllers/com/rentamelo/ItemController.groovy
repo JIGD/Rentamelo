@@ -38,7 +38,6 @@ class ItemController {
         def itemInstance = new Item(params)
         itemInstance.user = currentUser()
 		def categoryId = params.categoryId
-		System.out.println(categoryId)
 		def error = "Elije la categoria"
 		def blank = ""
 		if(categoryId.equals(error)||categoryId.equals(blank)){
@@ -93,7 +92,13 @@ class ItemController {
                     return
                 }
             }
+			try{
 			double price = Double.parseDouble(params.pricePerDay)
+			}
+			catch(NumberFormatException e){
+				flash.message = "Por favor utiliza un precio valido (solo numeros y un punto)"
+				return render(view: "edit", model: [itemInstance: itemInstance])
+				}
 			def categoryId = params.categoryId
 			def error = "Elije la categoria"
 			def blank = ""

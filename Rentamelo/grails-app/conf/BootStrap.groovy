@@ -59,27 +59,38 @@ class BootStrap {
 				categ = new Category(name:"Carros").save()
 				categ = new Category(name:"Casas").save()
 				
-				def item = new Item(name:"Plancha", summary:"Plancha nuevesita",
+				def item = new Item(name:"Plancha",
 					details:"Esta plancha esta curada, te la dejo barata",
 					category:Category.findByName("Electrodomesticos"), pricePerDay:10d,
 					dateCreated: new Date(), canBeSent:true, user:User.findByUsername('admin')).save(failOnError: true)
 
-					item = new Item(name:"Casa en la joya", summary:"Ven y conoce la finura",
+					item = new Item(name:"Casa en la joya",
 						details:"Casa en la joya a solo 100000 pesos el dia",
 						category:Category.findByName('Casas'), pricePerDay:100000d,
 						dateCreated: new Date(), canBeSent:false, user:User.findByUsername('admin')).save(failOnError: true)
 					
-						item = new Item(name:"Violin", summary:"Violin Barato",
+						item = new Item(name:"Violin",
 							details:"Este es un violin barato pero saca de apuro",
 							category:Category.findByName("Instrumentos"), pricePerDay:50d,
 							dateCreated: new Date(), canBeSent:true, user:User.findByUsername('admin') ).save(failOnError: true)
 					
-							item = new Item(name:"El bochomovil", summary:"Un bochito muy particular ",
+							item = new Item(name:"El bochomovil",
 							details:"Lucete con lo inlucible rentando este bochomovil!", pricePerDay:100d,
 							dateCreated: new Date(), canBeSent:true, user:User.findByUsername('jigd'), category:Category.findByName('Carros') ).save(failOnError: true)
-							
-													
-							
+
+				def rentDate = new Date().minus(12)
+				def rentReturn = new Date().minus(12-5)
+				def rent = new Rent(itemRented:"Plancha", itemOwner:"admin",rentedByUser:"jigd", dateRented:rentDate, daysRented:5, dateToReturn:rentReturn, totalCost:50, returned:true).save(failOnError: true)									
+			
+				rent = new Rent(itemRented:"Violin", itemOwner:"admin",rentedByUser:"jigd", dateRented:rentDate, daysRented:5, dateToReturn:rentReturn, totalCost:250, returned:true).save(failOnError: true)
+
+				rent = new Rent(itemRented:"Casa en la joya", itemOwner:"admin",rentedByUser:"jigd", dateRented:rentDate, daysRented:5, dateToReturn:rentReturn, totalCost:50, returned:true).save(failOnError: true)
+				rentDate = new Date().minus(6)
+				rentReturn = new Date().minus(6-5)
+				rent = new Rent(itemRented:"Plancha", itemOwner:"admin",rentedByUser:"jigd", dateRented:rentDate, daysRented:5, dateToReturn:rentReturn, totalCost:50, returned:true).save(failOnError: true)
+				
+				
+								
 	}
     def destroy = {
     }

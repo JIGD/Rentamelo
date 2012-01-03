@@ -5,6 +5,8 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
+          <script src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type="text/javascript" src="http://jzaefferer.github.com/jquery-validation/jquery.validate.js"></script>
         <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
         <title>Publicar nuevo articulo</title>
      

@@ -1,5 +1,6 @@
 package com.rentamelo
 
+import java.awt.event.ItemListener;
 import java.util.Date;
 
 class Rent {
@@ -11,7 +12,7 @@ class Rent {
 	Date dateRented
 	boolean returned = false
 	int daysRented
-	float totalCost
+	double totalCost
 	
     static constraints = {
 		itemRented nullable: false
@@ -58,6 +59,48 @@ class Rent {
 		def rentsByUser = Rent.findAllByRentedByUser(user)
 		[rentsByUser:rentsByUser]
 		}
+	
+	static def totalMoneyByUser(String user){
+		def rentsByUser = Rent.totalRentsByUser(user)
+		def rentsCount = rentsByUser.count()
+		def totalMoney
+		rentsByUser.each {
+			totalMoney+=it.totalCost
+			}
+		return [moneyOnUser:totalMoney, timesOnUser:rentsCount]
+		}
+	
+	static def reportByItem(String itemName){
+		def rentsByItem = Rent.findAllByItemRented(itemName)
+		def itemInstance = Item.findByName(itemName)
+		def totalMoney
+		rentsByItem.each{
+			totalMoney+= it.totalCost
+			}
+		
+		return [itemMoney:totalMoney, timesRented:itemInstance.timesRented, itemName:itemName]
+		}
+	
+	static def reportByUser(String someUser){
+		def itemOwner = User.findByUsername(someUser)
+		def itemsByUser = Item.findAllWhere(user:itemOwner)
+		def reportList = []
+		itemsByUser.each{
+			reportList.add(Rent.reportByItem(it.name))
+			}
+		return [UserReport:reportList]
+		}
+	
+	static def reportAllUsers(){
+		def users = User.findAll()
+		def totalUsersStuff
+		users.each{
+			totalUsersStuff.add(Rent.reportByUser(it.username))
+			}
+		return [totalUsers:totalUsersStuff]
+		}
+	
+	
 	
 	static def totalRentsByCategory(String category){
 		def itemListByCategory = Item.findAllByCategory(category)

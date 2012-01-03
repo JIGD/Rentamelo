@@ -173,4 +173,10 @@ class UserController {
 			return loggedUser.username
 			}
 		}
+	@Secured(['ROLE_ADMIN'])
+	def userReport={
+				def reportsByUser = Rent.reportByUser(telefono)
+				 render(view: "userReportCard", model: [reportsByUser:reportsByUser])
+		
+		}
 }

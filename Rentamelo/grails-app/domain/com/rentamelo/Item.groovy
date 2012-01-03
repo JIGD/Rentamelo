@@ -32,8 +32,8 @@ static searchable = {
 		details blank:false, maxSize:3000
 		user nullable:false
 		category nullable:false
-		picture nullable:true
-		pricePerDay nullable:false, scale:2, max:100000d
+		picture nullable:true, maxSize: 106384
+		pricePerDay nullable:false, scale:2, range:1..100000d
     }
 	
 	String toString(){
