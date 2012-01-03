@@ -61,22 +61,22 @@ class BootStrap {
 				
 				def item = new Item(name:"Plancha", summary:"Plancha nuevesita",
 					details:"Esta plancha esta curada, te la dejo barata",
-					category:Category.findByName("Electrodomesticos"), pricePerDay:10,
-					dateCreated: new Date(), isSent:false, user:User.findByUsername('admin')).save(failOnError: true)
+					category:Category.findByName("Electrodomesticos"), pricePerDay:10d,
+					dateCreated: new Date(), canBeSent:true, user:User.findByUsername('admin')).save(failOnError: true)
 
 					item = new Item(name:"Casa en la joya", summary:"Ven y conoce la finura",
-						details:"Casa en la joya a solo 10000000 pesos el dia",
-						category:Category.findByName('Casas'), pricePerDay:10000000,
-						dateCreated: new Date(), isSent:true, user:User.findByUsername('admin')).save(failOnError: true)
+						details:"Casa en la joya a solo 100000 pesos el dia",
+						category:Category.findByName('Casas'), pricePerDay:100000d,
+						dateCreated: new Date(), canBeSent:false, user:User.findByUsername('admin')).save(failOnError: true)
 					
 						item = new Item(name:"Violin", summary:"Violin Barato",
 							details:"Este es un violin barato pero saca de apuro",
-							category:Category.findByName("Instrumentos"), pricePerDay:50,
-							dateCreated: new Date(), isSent:true, user:User.findByUsername('admin') ).save(failOnError: true)
+							category:Category.findByName("Instrumentos"), pricePerDay:50d,
+							dateCreated: new Date(), canBeSent:true, user:User.findByUsername('admin') ).save(failOnError: true)
 					
 							item = new Item(name:"El bochomovil", summary:"Un bochito muy particular ",
-							details:"Lucete con lo inlucible rentando este bochomovil!", pricePerDay:100,
-							dateCreated: new Date(), isSent:true, user:User.findByUsername('jigd'), category:Category.findByName('Carros') ).save(failOnError: true)
+							details:"Lucete con lo inlucible rentando este bochomovil!", pricePerDay:100d,
+							dateCreated: new Date(), canBeSent:true, user:User.findByUsername('jigd'), category:Category.findByName('Carros') ).save(failOnError: true)
 							
 													
 							

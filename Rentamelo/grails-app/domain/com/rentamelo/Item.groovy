@@ -18,7 +18,7 @@ static searchable = {
 	boolean canBeSent = false
 	boolean isRented = false
 	int timesRented=0
-	float pricePerDay
+	double pricePerDay
 
 	
 	//agregar constraints
@@ -33,7 +33,7 @@ static searchable = {
 		user nullable:false
 		category nullable:false
 		picture nullable:true
-		pricePerDay nullable:false
+		pricePerDay nullable:false, scale:2, max:100000d
     }
 	
 	String toString(){

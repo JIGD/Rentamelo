@@ -31,6 +31,7 @@
   </g:javascript>
                   <div class="buttons">
                     <span class="button"><g:actionSubmit value="Aceptar" action="saveRent" onclick="return confirm('Estas seguro?');" /></span>
+                               		<span class="button"><a class="home" href="${createLink(uri: '/')}"><g:message code="Cancelar"/></a></span>
                 </div>
                  </g:form>
   </div>

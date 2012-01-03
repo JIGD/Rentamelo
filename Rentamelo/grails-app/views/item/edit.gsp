@@ -39,16 +39,7 @@
                                     <g:textField name="name" value="${itemInstance?.name}" />
                                 </td>
                             </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
-                                  <label for="summary"><g:message code="item.summary.label" default="Summary" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'summary', 'errors')}">
-                                    <g:textField name="summary" value="${itemInstance?.summary}" />
-                                </td>
-                            </tr>
-                        
+                       
                             <tr class="prop">
                                 <td valign="top" class="name">
                                   <label for="details"><g:message code="item.details.label" default="Details" /></label>
@@ -63,7 +54,7 @@
                                     <label for="pricePerDay"><g:message code="item.pricePerDay.label" default="Precio por dia" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'pricePerDay', 'errors')}">
-                                    <g:textArea name="pricePerDay" cols="10" rows="1" value="${itemInstance?.pricePerDay}" />
+                                    <g:textArea name="pricePerDay" cols="1" rows="10" value="${itemInstance?.pricePerDay}" />
                                 </td>
                             </tr>
                         
@@ -72,7 +63,7 @@
                                   <label for="category"><g:message code="item.category.label" default="Category" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
-                                    <g:select name="category.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['Elije la categoria': '']" />
+                                    <g:select name="categoryId" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['Elije la categoria': '']" />
                                 </td>
                             </tr>
                         
@@ -82,8 +73,12 @@
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'picture', 'errors')}">
                                     <input type="file" id="picture" name="picture" />
+                                    <h4>Si deseas modificar la imagen da click en la casilla</h4>
+                                    <g:checkBox name="changeImage" value="${false}"/>
                                 </td>
                             </tr>
+                            
+                            
                             
                              <tr class="prop">
                                 <td valign="top" class="name">
@@ -99,8 +94,8 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><g:actionSubmit class="save" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" /></span>
+               		<span class="button"><a class="home" href="${createLink(uri: '/')}"><g:message code="Cancelar"/></a></span>
                     <span class="button"><g:actionSubmit class="delete" action="delete" value="${message(code: 'default.button.delete.label', default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');" /></span>
-               		<span class="button"></span>
                 </div>
             </g:form>
         </div>

@@ -40,15 +40,6 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="summary"><g:message code="item.summary.label" default="Resumen" /></label>
-                                </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'summary', 'errors')}">
-                                    <g:textField name="summary" value="${itemInstance?.summary}" />
-                                </td>
-                            </tr>
-                        
-                            <tr class="prop">
-                                <td valign="top" class="name">
                                     <label for="photo"><g:message code="item.photo.label" default="Foto" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'photo', 'errors')}">
@@ -79,7 +70,7 @@
                                     <label for="category"><g:message code="item.category.label" default="Categoria" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
-                                    <g:select name="category.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['Elije la categoria': '']" />
+                                    <g:select name="categoryId" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['Elije la categoria': '']" />
                                 </td>
                             </tr>
                             
@@ -98,6 +89,7 @@
                 </div>
                 <div class="buttons">
                     <span class="button"><g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" /></span>
+                               		<span class="button"><a class="home" href="${createLink(uri: '/')}"><g:message code="Cancelar"/></a></span>
                 </div>
             </g:form>
         </div>

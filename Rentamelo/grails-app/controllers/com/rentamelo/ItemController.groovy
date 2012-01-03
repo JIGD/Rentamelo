@@ -37,7 +37,15 @@ class ItemController {
     def save = {
         def itemInstance = new Item(params)
         itemInstance.user = currentUser()
-		def category = Category.findByName(params.category.name)
+		def categoryId = params.categoryId
+		System.out.println(categoryId)
+		def error = "Elije la categoria"
+		def blank = ""
+		if(categoryId.equals(error)||categoryId.equals(blank)){
+			flash.message = "Recuerda elegir una categoria"
+			return render(view: "create", model: [itemInstance: itemInstance])
+			}
+		def category = Category.get(params.categoryId)
 		itemInstance.category = category
 		if (itemInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])}"
@@ -85,7 +93,22 @@ class ItemController {
                     return
                 }
             }
-            itemInstance.properties = params
+			double price = Double.parseDouble(params.pricePerDay)
+			def categoryId = params.categoryId
+			def error = "Elije la categoria"
+			def blank = ""
+			if(categoryId.equals(error)||categoryId.equals(blank)){
+				flash.message = "Recuerda elegir una categoria"
+				return render(view: "create", model: [itemInstance: itemInstance])
+				}
+			def category = Category.get(params.categoryId)
+			if (params.changeImage==true){
+				itemInstance.picture = params.picture
+				}
+            itemInstance.pricePerDay = price
+			itemInstance.category = category
+			itemInstance.details = params.details
+			itemInstance.name = params.name
             if (!itemInstance.hasErrors() && itemInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])}"
                 redirect(action: "show", id: itemInstance.id)
@@ -118,6 +141,10 @@ class ItemController {
             redirect(action: "list")
         }
     }
+	
+	def cancel= {
+		redirect(action: "index")
+		}
 	
 	def image= {
       def item = Item.get( params.id )
@@ -152,26 +179,24 @@ class ItemController {
 		def totalCost = rent.totalCost
 		def address = itemInstance.user.address1
 		rent.save()
-		sendMail {
-			to "${itemInstance.user.email}"
-			subject 'Te han rentado un articulo'
-			from "rentameloapp@gmail.com"
-			body 'Felicidades! '+rent.rentedByUser+' ha rentado '+rent.itemRented+' por '+rent.daysRented+' dias y debe de pagarte un total de $'+totalCost+' pesos'
-		 }
-		
-
-		System.out.println(rent.inspect())
-		System.out.println(itemInstance.canBeSent)
 		if (itemInstance.canBeSent==true){
-			//aqui va el método para avisar al usuario por medio de correo
-			//
-			//
-			//
-			//
-			flash.message = "El articulo sera enviado a su casa en brevedad, recuerde que debe pagar ${costoTotal} pesos"
+					sendMail {
+			to "${itemInstance.user.email}"
+			subject 'Te han rentado un articulo, preparate para enviarlo'
+			from "rentameloapp@gmail.com"
+			body 'Felicidades! '+rent.rentedByUser+' ha rentado '+rent.itemRented+' por '+rent.daysRented+' dias y debe de pagarte un total de $'+totalCost+" pesos. \nDebes de enviarlo a la dirección ${user.address1}"
+		 }
+			
+			flash.message = "El articulo sera enviado a su casa en brevedad, recuerde que debe pagar ${totalCost} pesos"
 			return redirect(action:"index", controller:"user")
 			}
 		else{
+			sendMail {
+				to "${itemInstance.user.email}"
+				subject 'Te han rentado un articulo'
+				from "rentameloapp@gmail.com"
+				body 'Felicidades! '+rent.rentedByUser+' ha rentado '+rent.itemRented+' por '+rent.daysRented+' dias y debe de pagarte un total de $'+totalCost+' pesos'
+			 }
 					flash.message = "Puede pasar por su articulo a la direccion: ${address} y recuerde que tiene que pagar ${totalCost} pesos"
 					return redirect(action:"index", controller:"user")
 								}
