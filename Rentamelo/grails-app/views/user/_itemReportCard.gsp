@@ -1,5 +1,5 @@
 <div class="item">
-<h1>"${itemInfo.itemName}"</h1>
-<h3>$"${itemInfo.totalCost}"</h3>
-<h3>"${itemInfo.totalMoney}"</h3>
+<h1>"${itemReport.itemName}"</h1>
+<h3>$"${itemReport.itemMoney}"</h3>
+<h3>"${itemReport.timesRented}"</h3>
 </div>

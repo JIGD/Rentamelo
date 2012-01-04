@@ -183,9 +183,41 @@ class UserController {
 	@Secured(['ROLE_ADMIN'])
 	def userReport={
 		def userName = params.userName
-				def userReport = Rent.reportByUser(userName)
+				def ownerReport = Rent.reportByOwner(userName)
+				def userMoney = Rent.totalMoneyEarnedByUser(userName)
+				return [ownerReport:ownerReport, userMoney:userMoney]
 		
 		}
+	@Secured(['ROLE_ADMIN'])
+	def itemReport={
+		def mostRentedItems = Rent.mostRentedItems()
+		return [mostRentedItems:mostRentedItems]
+		
+		}
+	
+	@Secured(['ROLE_ADMIN'])
+	def dateReport ={
+
+		}
+	
+	@Secured(['ROLE_ADMIN'])
+	def rentDateReport ={
+		def startDate = params.startDate
+		def endDate = params.endDate
+		def myFormat = 'dd/MM/yyyy'
+		/*if(Date.parse(myFormat, startDate.format(myFormat)) >= Date.parse(myFormat, endDate().format(myFormat))){
+			flash.message = "La fecha inicial no puede ser despues de la final"
+			return redirect(action:"dateReport")
+			}
+		if(Date.parse(myFormat, startDate.format(myFormat)) >= Date.parse(myFormat, new Date().format(myFormat))){
+			flash.message = "La fecha inicial no puede ser despues del dia de hoy"
+			return redirect(action:"dateReport")
+			}*/
+		def rentsByDate = Rent.rentByDate(startDate, endDate)
+		return [rentsByDate:rentsByDate]
+		
+		}
+	
 	
 	@Secured(['ROLE_ADMIN'])
 	def reportSelection ={}

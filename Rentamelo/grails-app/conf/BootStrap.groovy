@@ -61,17 +61,17 @@ class BootStrap {
 				
 				def item = new Item(name:"Plancha",
 					details:"Esta plancha esta curada, te la dejo barata",
-					category:Category.findByName("Electrodomesticos"), pricePerDay:10d,
+					category:Category.findByName("Electrodomesticos"), pricePerDay:10d, timesRented:2,
 					dateCreated: new Date(), canBeSent:true, user:User.findByUsername('admin')).save(failOnError: true)
 
 					item = new Item(name:"Casa en la joya",
 						details:"Casa en la joya a solo 100000 pesos el dia",
-						category:Category.findByName('Casas'), pricePerDay:100000d,
+						category:Category.findByName('Casas'), pricePerDay:100000d, timesRented:1,
 						dateCreated: new Date(), canBeSent:false, user:User.findByUsername('admin')).save(failOnError: true)
 					
 						item = new Item(name:"Violin",
 							details:"Este es un violin barato pero saca de apuro",
-							category:Category.findByName("Instrumentos"), pricePerDay:50d,
+							category:Category.findByName("Instrumentos"), pricePerDay:50d, timesRented:1,
 							dateCreated: new Date(), canBeSent:true, user:User.findByUsername('admin') ).save(failOnError: true)
 					
 							item = new Item(name:"El bochomovil",

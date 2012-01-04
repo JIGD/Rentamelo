@@ -55,41 +55,50 @@ class Rent {
 	//-----------------------------------------------------------------------
 	//Faltan cosas!!
 	//Funciones para reportes!! Recordar que se tienen que hacer listas de montones
-	static def totalRentsByUser(String user){
-		def rentsByUser = Rent.findAllByRentedByUser(user)
-		[rentsByUser:rentsByUser]
-		}
 	
-	static def totalMoneyByUser(String user){
-		def rentsByUser = Rent.totalRentsByUser(user)
-		def rentsCount = rentsByUser.count()
-		def totalMoney
+	static def totalMoneyUsedByUser(String user){
+		def rentsByUser = Rent.findAllByRentedByUser(user)
+		def rentsCount = rentsByUser.size()
+		def totalMoney = 0
 		rentsByUser.each {
 			totalMoney+=it.totalCost
 			}
-		return [moneyOnUser:totalMoney, timesOnUser:rentsCount]
+		System.out.println(totalMoney + " "+rentsCount)
+		return [totalMoney, rentsCount]
+		}
+	
+	static def totalMoneyEarnedByUser(String user){
+		def rentsByUser = Rent.findAllByItemOwner(user)
+		def rentsCount = rentsByUser.size()
+		def totalMoney = 0
+		rentsByUser.each {
+			totalMoney+=it.totalCost
+			}
+		System.out.println(totalMoney + " "+rentsCount)
+		return [totalMoney, rentsCount]
 		}
 	
 	static def reportByItem(String itemName){
 		def rentsByItem = Rent.findAllByItemRented(itemName)
 		def itemInstance = Item.findByName(itemName)
-		def totalMoney
+		def totalMoney = 0
 		rentsByItem.each{
 			totalMoney+= it.totalCost
 			}
-		
-		return [itemMoney:totalMoney, timesRented:itemInstance.timesRented, itemName:itemName]
+		def itemReport = [itemMoney:totalMoney, timesRented:itemInstance.timesRented, itemName:itemName]
+		return itemReport
 		}
 	
-	static def reportByUser(String someUser){
+	static def reportByOwner(String someUser){
 		def itemOwner = User.findByUsername(someUser)
 		def itemsByUser = Item.findAllWhere(user:itemOwner)
 		def reportList = []
 		itemsByUser.each{
 			reportList.add(Rent.reportByItem(it.name))
 			}
-		return [UserReport:reportList]
+		return reportList
 		}
+	
 	
 	static def reportAllUsers(){
 		def users = User.findAll()
@@ -111,6 +120,19 @@ class Rent {
 		listOfRentsByCategory.add(itemRents:listOfRents)
 		}
 		[totalRentsByCategory:listOfRentsByCategory]
+		}
+	
+	static def mostRentedItems(){
+		def itemRentedList = Item.list(sort:'timesRented', order:'desc')
+		def reportList = []
+		itemRentedList.each{
+			reportList.add(Rent.reportByItem(it.name))
+			}
+		return reportList
+		}
+	
+	static def rentByDate(Date startDate, Date endDate){
+		def rentList = Rent.findAllByDateRentedBetween(startDate, endDate)
 		}
 	
 	
