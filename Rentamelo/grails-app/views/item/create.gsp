@@ -7,7 +7,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
         <title>Publicar nuevo articulo</title>
-     <jv:generateValidation domain="item" display="list" container="valErrors" form="itemForm" ignore="['user','timesRented', 'category', 'isRented']"/>
+     <jv:generateValidation domain="item" display="list" container="valErrors" form="itemForm" ignore="['user','timesRented', 'category', 'isRented', 'canBeSent']"/>
     </head>
     <body>
         <div class="nav">
@@ -20,12 +20,12 @@
             <div class="message">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${itemInstance}">
-            <div id="errors" class="errors" style="display:block;">
+            <div id="errors" class="errors" style="display:none;">
                 <g:renderErrors bean="${itemInstance}" as="list" />
             </div>
             </g:hasErrors>
             <g:form id="itemForm" name="itemForm" onsubmit="return validateForm(this);" action="save"  enctype="multipart/form-data">
-                               <div id="valErrors" class="errors">
+                               <div id="valErrors" class="errors" style="display:none;">
                                </div>
                                
                                <div class="dialog">
@@ -68,12 +68,12 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
+                                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="category"><g:message code="item.category.label" default="Categoria" /></label>
+                                    <label for="category"><g:message code="item.category.label" default="Category" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
-                                    <g:select name="categoryId" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['Elije la categoria': '']" />
+                                    <g:select name="category.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}"  />
                                 </td>
                             </tr>
                             
@@ -82,7 +82,7 @@
                                     <label for="canBeSent"><g:message code="item.canBeSent.label" default="Puede ser enviado" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'canBeSent', 'errors')}">
-                               <g:checkBox name="canBeSent" value="${true}"/>
+                               <g:checkBox name="canBeSent" value="${false}"/>
                                 </td>
                             </tr>
                             

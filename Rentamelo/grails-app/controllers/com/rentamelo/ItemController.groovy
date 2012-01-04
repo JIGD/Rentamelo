@@ -36,16 +36,16 @@ class ItemController {
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def save = {
         def itemInstance = new Item(params)
-        itemInstance.user = currentUser()
-		def categoryId = params.categoryId
-		def error = "Elije la categoria"
-		def blank = ""
-		if(categoryId.equals(error)||categoryId.equals(blank)){
-			flash.message = "Recuerda elegir una categoria"
-			return render(view: "create", model: [itemInstance: itemInstance])
+		double price = 0
+		try{
+		price = Double.parseDouble(params.pricePerDay)
+		}
+		catch(NumberFormatException e){
+			flash.message = "Por favor utiliza un precio valido (solo numeros y un punto)"
+			return render(view: "edit", model: [itemInstance: itemInstance])
 			}
-		def category = Category.get(params.categoryId)
-		itemInstance.category = category
+		itemInstance.pricePerDay=price
+        itemInstance.user = currentUser()
 		if (itemInstance.save(flush: true)) {
             flash.message = "${message(code: 'default.created.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])}"
             redirect(action: "show", id: itemInstance.id)
@@ -92,28 +92,16 @@ class ItemController {
                     return
                 }
             }
+			double price = 0
 			try{
-			double price = Double.parseDouble(params.pricePerDay)
+			price = Double.parseDouble(params.pricePerDay)
 			}
 			catch(NumberFormatException e){
 				flash.message = "Por favor utiliza un precio valido (solo numeros y un punto)"
 				return render(view: "edit", model: [itemInstance: itemInstance])
 				}
-			def categoryId = params.categoryId
-			def error = "Elije la categoria"
-			def blank = ""
-			if(categoryId.equals(error)||categoryId.equals(blank)){
-				flash.message = "Recuerda elegir una categoria"
-				return render(view: "create", model: [itemInstance: itemInstance])
-				}
-			def category = Category.get(params.categoryId)
-			if (params.changeImage==true){
-				itemInstance.picture = params.picture
-				}
+			itemInstance.properties = params
             itemInstance.pricePerDay = price
-			itemInstance.category = category
-			itemInstance.details = params.details
-			itemInstance.name = params.name
             if (!itemInstance.hasErrors() && itemInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])}"
                 redirect(action: "show", id: itemInstance.id)

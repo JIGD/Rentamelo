@@ -7,6 +7,8 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
         <title><g:message code="default.edit.label" args="[entityName]" /></title>
+             <jv:generateValidation domain="item" display="list" container="valErrors" form="editItem" ignore="['user','timesRented', 'category', 'isRented', 'canBeSent']"/>
+        
     </head>
     <body>
         <div class="nav">
@@ -24,7 +26,9 @@
                 <g:renderErrors bean="${itemInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form method="post"  enctype="multipart/form-data">
+            <g:form method="post" name="editItem"  enctype="multipart/form-data">
+            <div id="valErrors" class="errors" style="display:none;">
+                               </div>
                 <g:hiddenField name="id" value="${itemInstance?.id}" />
                 <g:hiddenField name="version" value="${itemInstance?.version}" />
                 <div class="dialog">
@@ -58,12 +62,12 @@
                                 </td>
                             </tr>
                         
-                            <tr class="prop">
+                                                     <tr class="prop">
                                 <td valign="top" class="name">
-                                  <label for="category"><g:message code="item.category.label" default="Category" /></label>
+                                    <label for="category"><g:message code="item.category.label" default="Category" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'category', 'errors')}">
-                                    <g:select name="categoryId" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}" noSelection="['Elije la categoria': '']" />
+                                    <g:select name="category.id" from="${com.rentamelo.Category.list()}" optionKey="id" value="${itemInstance?.category?.id}"  />
                                 </td>
                             </tr>
                         
