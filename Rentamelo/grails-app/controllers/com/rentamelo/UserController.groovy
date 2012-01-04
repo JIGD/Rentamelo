@@ -173,10 +173,20 @@ class UserController {
 			return loggedUser.username
 			}
 		}
+	
+	@Secured(['ROLE_ADMIN'])
+	def userListReport={
+		def userList = User.list()
+		return [userList:userList]
+		}
+	
 	@Secured(['ROLE_ADMIN'])
 	def userReport={
-				def reportsByUser = Rent.reportByUser(telefono)
-				 render(view: "userReportCard", model: [reportsByUser:reportsByUser])
+		def userName = params.userName
+				def userReport = Rent.reportByUser(userName)
 		
 		}
+	
+	@Secured(['ROLE_ADMIN'])
+	def reportSelection ={}
 }

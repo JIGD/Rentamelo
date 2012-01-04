@@ -12,7 +12,7 @@
   <div class="body">
   <h1>Por favor elije el reporte que desees ver</h1>
   <g:link><h2>Reporte general - Muestra todos los usuarios con sus articulos y etc</h2></g:link>
-  <g:link><h2>Reporte por usuario - Muestra una lista de usuario para elegir uno y de ahi sacar una lista de reporte por articulos (Pendiente)</h2></g:link> 
+  <g:link action="userListReport"><h2>Reporte por usuario - Muestra una lista de usuario para elegir uno y de ahi sacar una lista de reporte por articulos</h2></g:link> 
     <g:link><h2>Reporte monetario - Cuanto dinero han gastado y generado todos los usuarios</h2></g:link> 
       <g:link><h2>Reporte monetario por usuario - Muestra una lista de usuario para elegir uno y ver su propio reporte monetario (Pendiente)</h2></g:link> 
   </div>
