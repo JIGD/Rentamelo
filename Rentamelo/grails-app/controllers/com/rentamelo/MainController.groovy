@@ -6,7 +6,7 @@ import grails.plugins.springsecurity.Secured
 class MainController {
 
     def index = {		
-		def items = Item.getItems()
+		def items = Item.list(sort:"dateCreated", oder:"asc", max:10)
 		def categories = Category.list(sort:"name");
 		def things =[items, categories];
 		return [things:things]

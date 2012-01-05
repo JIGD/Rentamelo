@@ -27,7 +27,7 @@
                         </sec:ifAnyGranted>
                             <g:sortableColumn property="name" title="Nombre" />
                         
-                            <g:sortableColumn property="summary" title="Resumen" />
+                            <g:sortableColumn property="timesRented" title="Veces rentado" />
                         
 
                            
@@ -45,13 +45,12 @@
                         </sec:ifAnyGranted>
                             <td>${fieldValue(bean: itemInstance, field: "name")}</td>
                         
-                            <td>${fieldValue(bean: itemInstance, field: "summary")}</td>
-                        
                             
                             <td><g:formatDate date="${itemInstance.dateCreated}" /></td>
                         
                             <td>${fieldValue(bean: itemInstance, field: "details")}</td>
                         
+                            <td>${fieldValue(bean: itemInstance, field: "timesRented")}</td>
                         </tr>
                     </g:each>
                     </tbody>

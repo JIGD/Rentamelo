@@ -1,4 +1,5 @@
 package com.rentamelo
+import org.apache.commons.io.FileUtils
 import grails.plugins.springsecurity.Secured
 import grails.plugins.springsecurity.SecurityConfigType
 //grails.plugins.springsecurity.securityConfigType = SecurityConfigType.Annotation
@@ -38,12 +39,20 @@ class ItemController {
         def itemInstance = new Item(params)
 		double price = 0
 		try{
-		price = Double.parseDouble(params.pricePerDay)
+		price = Double.parseDouble(params.price)
 		}
 		catch(NumberFormatException e){
 			flash.message = "Por favor utiliza un precio valido (solo numeros y un punto)"
+			if(price>=100000){
+				flash.message = "El precio no puede ser mayor a 100000"
+				}
 			return render(view: "edit", model: [itemInstance: itemInstance])
 			}
+		if(price>=100000){
+			flash.message = "El precio no puede ser mayor a 100000"
+			return render(view: "edit", model: [itemInstance: itemInstance])
+			}
+		
 		itemInstance.pricePerDay=price
         itemInstance.user = currentUser()
 		if (itemInstance.save(flush: true)) {
@@ -82,6 +91,7 @@ class ItemController {
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def update = {
         def itemInstance = Item.get(params.id)
+		boolean changeImage = params.changeImage
         if (itemInstance) {
             if (params.version) {
                 def version = params.version.toLong()
@@ -93,14 +103,25 @@ class ItemController {
                 }
             }
 			double price = 0
-			try{
-			price = Double.parseDouble(params.pricePerDay)
-			}
-			catch(NumberFormatException e){
-				flash.message = "Por favor utiliza un precio valido (solo numeros y un punto)"
-				return render(view: "edit", model: [itemInstance: itemInstance])
-				}
 			itemInstance.properties = params
+			if(changeImage==true){
+				def picture = params.photo
+				itemInstance.picture = picture.getBytes()
+				}
+	try{
+		price = Double.parseDouble(params.price)
+		}
+		catch(NumberFormatException e){
+			flash.message = "Por favor utiliza un precio valido (solo numeros y un punto)"
+			if(price>=100000){
+				flash.message = "El precio no puede ser mayor a 100000"
+				}
+			return render(view: "edit", model: [itemInstance: itemInstance])
+			}
+		if(price>=100000){
+			flash.message = "El precio no puede ser mayor a 100000"
+			return render(view: "edit", model: [itemInstance: itemInstance])
+			}
             itemInstance.pricePerDay = price
             if (!itemInstance.hasErrors() && itemInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'item.label', default: 'Item'), itemInstance.id])}"
@@ -122,7 +143,7 @@ class ItemController {
             try {
                 itemInstance.delete(flush: true)
                 flash.message = "${message(code: 'default.deleted.message', args: [message(code: 'item.label', default: 'Item'), params.id])}"
-                redirect(action: "list")
+                 redirect(action: "index", controller:"user")
             }
             catch (org.springframework.dao.DataIntegrityViolationException e) {
                 flash.message = "${message(code: 'default.not.deleted.message', args: [message(code: 'item.label', default: 'Item'), params.id])}"
@@ -131,7 +152,7 @@ class ItemController {
         }
         else {
             flash.message = "${message(code: 'default.not.found.message', args: [message(code: 'item.label', default: 'Item'), params.id])}"
-            redirect(action: "list")
+            redirect(action: "index", controller:"user")
         }
     }
 	

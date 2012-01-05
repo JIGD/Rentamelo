@@ -63,7 +63,6 @@ class Rent {
 		rentsByUser.each {
 			totalMoney+=it.totalCost
 			}
-		System.out.println(totalMoney + " "+rentsCount)
 		return [totalMoney, rentsCount]
 		}
 	

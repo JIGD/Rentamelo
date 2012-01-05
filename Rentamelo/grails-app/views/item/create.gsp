@@ -7,7 +7,7 @@
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'item.label', default: 'Item')}" />
         <title>Publicar nuevo articulo</title>
-     <jv:generateValidation domain="item" display="list" container="valErrors" form="itemForm" ignore="['user','timesRented', 'category', 'isRented', 'canBeSent']"/>
+     <jv:generateValidation domain="item" display="list" container="valErrors" form="itemForm" ignore="['user','timesRented', 'category', 'isRented', 'canBeSent', 'pricePerDay']"/>
     </head>
     <body>
         <div class="nav">
@@ -43,7 +43,7 @@
                         
                             <tr class="prop">
                                 <td valign="top" class="name">
-                                    <label for="photo"><g:message code="item.photo.label" default="Foto" /></label>
+                                    <label for="photo"><g:message code="item.picture.label" default="Foto" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'picture', 'errors')}">
                                    	<input type="file" name="picture"/>
@@ -63,8 +63,8 @@
                                 <td valign="top" class="name">
                                     <label for="pricePerDay"><g:message code="item.pricePerDay.label" default="Precio por dia" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'pricePerDay', 'errors')}">
-                                    <g:textArea name="pricePerDay" cols="10" rows="1" value="${itemInstance?.pricePerDay}" />
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'precio', 'errors')}">
+                                    <g:textArea name="price" cols="10" rows="1" value="${itemInstance?.pricePerDay}" />
                                 </td>
                             </tr>
                         

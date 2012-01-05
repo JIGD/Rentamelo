@@ -40,7 +40,7 @@
                                   <label for="name"><g:message code="item.name.label" default="Name" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'name', 'errors')}">
-                                    <g:textField name="name" value="${itemInstance?.name}" />
+                                    ${itemInstance?.name}
                                 </td>
                             </tr>
                        
@@ -53,12 +53,12 @@
                                 </td>
                             </tr>
                             
-                                                        <tr class="prop">
+                               <tr class="prop">
                                 <td valign="top" class="name">
                                     <label for="pricePerDay"><g:message code="item.pricePerDay.label" default="Precio por dia" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'pricePerDay', 'errors')}">
-                                    <g:textArea name="pricePerDay" cols="1" rows="10" value="${itemInstance?.pricePerDay}" />
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'precio', 'errors')}">
+                                    <g:textArea name="price" cols="10" rows="1" value="${itemInstance?.pricePerDay}" />
                                 </td>
                             </tr>
                         
