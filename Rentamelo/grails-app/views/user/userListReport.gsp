@@ -7,6 +7,9 @@
 </head>
 <body>
   <div class="body">
+
+            <div class="dialog">
+  
   						<g:each in="${userList}" status="i" var="userInstance">
   						
 <g:link params="[userName:userInstance.username]" action="userReport" controller="user" ><h2>"${userInstance.username}"</h2></g:link>

@@ -205,14 +205,15 @@ class UserController {
 		def startDate = params.startDate
 		def endDate = params.endDate
 		def myFormat = 'dd/MM/yyyy'
-		/*if(Date.parse(myFormat, startDate.format(myFormat)) >= Date.parse(myFormat, endDate().format(myFormat))){
+		if(startDate>=endDate){
 			flash.message = "La fecha inicial no puede ser despues de la final"
 			return redirect(action:"dateReport")
 			}
-		if(Date.parse(myFormat, startDate.format(myFormat)) >= Date.parse(myFormat, new Date().format(myFormat))){
+		if(startDate>= new Date()){
 			flash.message = "La fecha inicial no puede ser despues del dia de hoy"
 			return redirect(action:"dateReport")
-			}*/
+			}
+
 		def rentsByDate = Rent.rentByDate(startDate, endDate)
 		return [rentsByDate:rentsByDate]
 		

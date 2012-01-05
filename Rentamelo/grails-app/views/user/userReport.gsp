@@ -6,6 +6,7 @@
 <title>Reporte de usuario</title>
 </head>
 <body>
+
   <div class="body">
                   <h1>Este usuario ha puesto y rentado los siguientes articulos</h1>    
 						<g:each in="${ownerReport}" status="i" var="itemReport">
