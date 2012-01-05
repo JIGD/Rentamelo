@@ -6,6 +6,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="layout" content="main" />
         <g:set var="entityName" value="${message(code: 'user.label', default: 'User')}" />
+             <jv:generateValidation domain="user" display="list" container="valErrors" form="userForm" ignore="[]"/>
+        
         <title><g:message code="default.create.label" args="[entityName]" /></title>
     </head>
     <body>
@@ -22,7 +24,9 @@
                 <g:renderErrors bean="${userInstance}" as="list" />
             </div>
             </g:hasErrors>
-            <g:form action="save" >
+            <g:form name="userForm" action="save" >
+                                           <div id="valErrors" class="errors" style="display:none;">
+                               </div>
                 <div class="dialog">
                     <table>
                         <tbody>
@@ -41,7 +45,7 @@
                                     <label for="password"><g:message code="user.password.label" default="Password" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: userInstance, field: 'password', 'errors')}">
-                                    <g:textField name="password" value="${userInstance?.password}" />
+                                 <input type="password" name="password" size="15" maxlength="14"  value="${userInstance?.password}">
                                 </td>
                             </tr>
                         

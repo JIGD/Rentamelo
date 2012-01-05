@@ -45,8 +45,8 @@
                                 <td valign="top" class="name">
                                     <label for="photo"><g:message code="item.photo.label" default="Foto" /></label>
                                 </td>
-                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'photo', 'errors')}">
-                                   	<input type="file" name="photo"/>
+                                <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'picture', 'errors')}">
+                                   	<input type="file" name="picture"/>
                                 </td>
                             </tr>
                         

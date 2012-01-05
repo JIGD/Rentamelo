@@ -76,7 +76,7 @@
                                   <label for="picture"><g:message code="item.picture.label" default="Picture" /></label>
                                 </td>
                                 <td valign="top" class="value ${hasErrors(bean: itemInstance, field: 'picture', 'errors')}">
-                                    <input type="file" id="picture" name="picture" />
+                                    <input type="file" id="photo" name="photo" />
                                     <h4>Si deseas modificar la imagen da click en la casilla</h4>
                                     <g:checkBox name="changeImage" value="${false}"/>
                                 </td>

@@ -3,6 +3,7 @@ import com.rentamelo.SecUser
 import com.rentamelo.SecRole
 import com.rentamelo.SecUserSecRole
 import com.rentamelo.*
+import org.apache.commons.io.FileUtils
 
 class BootStrap {
 	def springSecurityService
@@ -59,14 +60,17 @@ class BootStrap {
 				categ = new Category(name:"Carros").save()
 				categ = new Category(name:"Casas").save()
 				
-				def item = new Item(name:"Plancha",
+				File plancha = new File("web-app/images/plancha.jpg")
+
+								def item = new Item(name:"Plancha",
 					details:"Esta plancha esta curada, te la dejo barata",
-					category:Category.findByName("Electrodomesticos"), pricePerDay:10d, timesRented:2,
+					category:Category.findByName("Electrodomesticos"), pricePerDay:10d, timesRented:2, picture:FileUtils.readFileToByteArray(plancha),
 					dateCreated: new Date(), canBeSent:true, user:User.findByUsername('admin')).save(failOnError: true)
 
+					
 					item = new Item(name:"Casa en la joya",
 						details:"Casa en la joya a solo 100000 pesos el dia",
-						category:Category.findByName('Casas'), pricePerDay:100000d, timesRented:1,
+						category:Category.findByName('Casas'), pricePerDay:100000d, timesRented:1, 
 						dateCreated: new Date(), canBeSent:false, user:User.findByUsername('admin')).save(failOnError: true)
 					
 						item = new Item(name:"Violin",

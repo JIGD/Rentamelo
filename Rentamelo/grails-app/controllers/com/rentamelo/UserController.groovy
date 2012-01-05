@@ -86,6 +86,10 @@ class UserController {
 	@Secured(['ROLE_ADMIN','ROLE_USER'])
     def update = {
         def userInstance = User.get(params.id)
+		System.out.println("PUTOSSSSSSSSSSSSS")
+		System.out.println(params.inspect())
+def changeImage = params.changeImage
+		System.out.println(changeImage+"++++++++++++++++++++")
         if (userInstance) {
             if (params.version) {
                 def version = params.version.toLong()
@@ -96,7 +100,12 @@ class UserController {
                     return
                 }
             }
+			
             userInstance.properties = params
+			if(params.changeImage==true){
+				userInstance.picture = params.photo
+				}
+			
             if (!userInstance.hasErrors() && userInstance.save(flush: true)) {
                 flash.message = "${message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])}"
                 redirect(action: "show", id: userInstance.id)

@@ -142,7 +142,13 @@ class ItemController {
 	def image= {
       def item = Item.get( params.id )
       byte[] image = item.picture 
-      response.outputStream << image
+	  try{
+		  response.outputStream << image
+		  }
+	  catch(Throwable e){
+		  
+		  }
+
     }
 	
 //-------------------------------	
